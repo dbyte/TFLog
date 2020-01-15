@@ -18,20 +18,27 @@ public struct Log {
         file: StaticString = #file,
         function: StaticString = #function) {
         
+        #if CUSTOMLOG
         // We must instantiate the logger, taking care of multithreading!
         let logger = Logger()
         logger.dump(header, data: data, cat: cat, file: file, function: function)
+        #endif
     }
     
     public static func newLine() {
         // We must instantiate the logger, taking care of multithreading!
+        #if CUSTOMLOG
         let logger = Logger()
         logger.newLine()
+        #endif
     }
     
     public static func verticalDivider() {
         // We must instantiate the logger, taking care of multithreading!
+        #if CUSTOMLOG
         let logger = Logger()
         logger.verticalDivider()
+        #endif
     }
+
 }
