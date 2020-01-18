@@ -103,7 +103,7 @@ internal class Logger {
     
     private func getDataString(data: Any?) -> String {
         guard let data = data else { return "" }
-        return "➡️ " + String(describing: data) + " ◀️"
+        return "▶️ " + String(describing: data) + " ◀️"
     }
     
     private func getCategoryEmoticon(cat: Option.Cat?) -> String {
