@@ -10,7 +10,7 @@ import Foundation
 
 public struct Option {
     
-    public enum Cat: String {
+    public enum Cat: String, CaseIterable {
         
         case error = "📕"
         case warning = "📙"
