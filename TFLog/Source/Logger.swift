@@ -6,37 +6,61 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-import Foundation
+// MARK: - Logger Implementation
 
-/// Model. Wrapper for Swift.print. Provides logging functionality.
-internal class Logger {
+/// Logger Implementation
+///
+/// Wrapper for Swift.print. Provides simple logging functionality.
+internal class Logger: LogInterface {
+    
+    // MARK: - Properties/Init
     
     private var header: String
     private var dataString: String
     private var timestampString: String
     private var categoryEmoticon: String
-    private var commonOpt: Option.Common?
+    private var option: Options?
     
-    init() {
+    internal init() {
         header = ""
         dataString = ""
         timestampString = ""
         categoryEmoticon = ""
-        commonOpt = nil
+        option = nil
+    }
+}
+
+// MARK: - Methods
+
+internal extension Logger {
+    
+    func log(_ header: String?) {
+        log(header, data: nil, lev: nil)
     }
     
-    /// Print debug infos to console.
-    ///
-    /// - Parameters:
-    ///     - header: Meaningful header for subsequent block of data.
-    ///     - data: Describing data as text, f.i. for debugging additional info at runtime.
-    internal func dump(
+    func log(_ header: String?, data: Any?) {
+        log(header, data: data, lev: nil)
+    }
+    
+    func log(_ header: String?, lev: LogLevel?) {
+        log(header, data: nil, lev: lev)
+    }
+    
+    func log(data: Any?) {
+        log(nil, data: data, lev: nil)
+    }
+    
+    func log(data: Any?, lev: LogLevel?) {
+        log(nil, data: data, lev: lev)
+    }
+    
+    // Print debug infos to console.
+    func log(
         _ header: String? = "",
         data: Any? = nil,
-        cat: Option.Cat?,
-        file: StaticString = #file,
-        function: StaticString = #function) {
+        lev: LogLevel?) {
         
+        #if CUSTOMLOG
         // Sanitize incoming values
         self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
         
@@ -47,22 +71,33 @@ internal class Logger {
         timestampString = getTimestampString()
         
         // Get emoticon for error cat
-        categoryEmoticon = getCategoryEmoticon(cat: cat)
+        categoryEmoticon = getCategoryEmoticon(lev: lev)
         
         // Output
         print(getFinalOutput())
         //print(file, function, finalOutput)
+        #endif
     }
     
-    internal func newLine() {
-        commonOpt = Option.Common.newLine
+    func newLine() {
+        #if CUSTOMLOG
+        option = Options.newLine
         print(getFinalOutput())
+        #endif
     }
     
-    internal func verticalDivider() {
-        commonOpt = Option.Common.verticalDivider
+    func verticalDivider() {
+        #if CUSTOMLOG
+        option = Options.verticalDivider
         print(getFinalOutput())
+        #endif
     }
+    
+}
+
+// MARK: - Private helpers
+
+private extension Logger {
     
     private func getFinalOutput() -> String {
         var final: String
@@ -87,7 +122,7 @@ internal class Logger {
             final = ""
         }
         
-        switch commonOpt {
+        switch option {
         case .newLine:
             final += "\n"
             
@@ -106,19 +141,19 @@ internal class Logger {
         return "▶️" + String(describing: data) + "◀️"
     }
     
-    private func getCategoryEmoticon(cat: Option.Cat?) -> String {
-        return cat?.rawValue ?? ""
+    private func getCategoryEmoticon(lev: LogLevel?) -> String {
+        return lev?.rawValue ?? ""
     }
     
     private func getTimestampString() -> String {
         let formatOptions: ISO8601DateFormatter.Options =
-                [.withYear,
-                 .withMonth,
-                 .withDay,
-                 .withFullTime,
-                 .withDashSeparatorInDate,
-                 .withColonSeparatorInTime]
-            let result = Date().convertToTimezoneISO8601(timeZone: TimeZone.current, formatOptions: formatOptions)
-            return result
-        }
+            [.withYear,
+             .withMonth,
+             .withDay,
+             .withFullTime,
+             .withDashSeparatorInDate,
+             .withColonSeparatorInTime]
+        let result = Date().convertToTimezoneISO8601(timeZone: TimeZone.current, formatOptions: formatOptions)
+        return result
     }
+}
