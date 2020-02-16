@@ -16,6 +16,9 @@ public protocol LogInterface {
     we consider them as workarounds too.
     */
     
+    /// Required to configure the logger.
+    init(configuration: LogConfiguration)
+    
     /// Logging.
     ///
     /// - Parameters:

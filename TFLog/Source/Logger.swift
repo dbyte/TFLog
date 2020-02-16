@@ -6,25 +6,6 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-public class LogConfiguration {
-    
-    // MARK: - Properties/Init
-    
-    private(set) var logLevelSymbols: LogLevelSymbols
-    
-    public init() {
-        self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
-    }
-    
-    // MARK: - Methods
-    
-    // External configuration: symbols can be built via LogLevelSymbolBuilder and then are injected here.
-    public func changeSymbols(with symbols: LogLevelSymbols) {
-        self.logLevelSymbols = symbols
-    }
-
-}
-
 // MARK: - Logger Implementation
 
 /// Logger Implementation
@@ -34,20 +15,20 @@ internal class Logger: LogInterface {
     
     // MARK: - Properties/Init
     
+    private var configuration: LogConfiguration
     private var header: String
     private var dataString: String
     private var timestampString: String
     private var logLevelSymbol: String
     private var option: Options?
-    private var configuration: LogConfiguration
     
-    internal init(configuration: LogConfiguration) {
+    internal required init(configuration: LogConfiguration) {
+        self.configuration = configuration
         header = ""
         dataString = ""
         timestampString = ""
         logLevelSymbol = ""
         option = nil
-        self.configuration = configuration
     }
 }
 
@@ -82,6 +63,9 @@ internal extension Logger {
         lev: LogLevel?) {
         
         #if CUSTOMLOG
+        // Early return when switched off via configuration.
+        guard configuration.isLoggingActive else { return }
+        
         // Sanitize incoming values
         self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
         
@@ -102,6 +86,9 @@ internal extension Logger {
     
     func newLine() {
         #if CUSTOMLOG
+        // Early return when switched off via configuration.
+        guard configuration.isLoggingActive else { return }
+        
         option = Options.newLine
         print(getFinalOutput())
         #endif
@@ -109,6 +96,9 @@ internal extension Logger {
     
     func verticalDivider() {
         #if CUSTOMLOG
+        // Early return when switched off via configuration.
+        guard configuration.isLoggingActive else { return }
+        
         option = Options.verticalDivider
         print(getFinalOutput())
         #endif

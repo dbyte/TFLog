@@ -6,7 +6,13 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
+// MARK: Fixed log levels and their corresponding (unicode-) symbols
+
 /// Log levels
+///
+/// You can replace the unicode symbols by using `LogLevelSymbolBuilder` followed by injection
+/// into instance method `LogConfiguration.replaceSymbols(:)`
+/// - See also: `LogLevelSymbolBuilder`
 public enum LogLevel: String, CaseIterable {
     
     case error
@@ -16,100 +22,30 @@ public enum LogLevel: String, CaseIterable {
     case canceled
     case other
     
-    internal func symbol(from currentSymbols: LogLevelSymbols) -> String {
+    // It's possible for consumers to replace the corresponding unicode symbols.
+    internal func symbol(from symbols: LogLevelSymbols) -> String {
         var symbol: String {
             
             switch self {
             case .error:
-                return currentSymbols.error
+                return symbols.error
                 
             case .warning:
-                return currentSymbols.warning
+                return symbols.warning
                 
             case .success:
-                return currentSymbols.success
+                return symbols.success
                 
             case .action:
-                return currentSymbols.action
+                return symbols.action
                 
             case .canceled:
-                return currentSymbols.canceled
+                return symbols.canceled
                 
             case .other:
-                return currentSymbols.other
+                return symbols.other
             }
         }
         return symbol
-    }
-}
-
-/// Log level symbols customization hook
-public struct LogLevelSymbols {
-    
-    internal var error: String
-    internal var warning: String
-    internal var success: String
-    internal var action: String
-    internal var canceled: String
-    internal var other: String
-    
-    internal init() {
-        self.error = "📕"
-        self.warning = "📙"
-        self.success = "📗"
-        self.action = "📘"
-        self.canceled = "📓"
-        self.other = "📔"
-    }
-}
-
-/// Log level symbols customization.
-/// Use this builder to build a new set of symbols and inject it via LogConfiguration.changeSymbols(:)
-public class LogLevelSymbolBuilder {
-    
-    internal var logLevelSymbols: LogLevelSymbols
-    
-    public init(forConfiguration config: LogConfiguration) {
-        logLevelSymbols = config.logLevelSymbols
-    }
-    
-    @discardableResult
-    public func errorSymbol(_ error: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.error = error
-        return self
-    }
-    
-    @discardableResult
-    public func warningSymbol(_ warning: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.warning = warning
-        return self
-    }
-    
-    @discardableResult
-    public func successSymbol(_ success: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.success = success
-        return self
-    }
-    
-    @discardableResult
-    public func actionSymbol(_ action: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.action = action
-        return self
-    }
-    
-    @discardableResult
-    public func canceledSymbol(_ canceled: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.canceled = canceled
-        return self
-    }
-    
-    @discardableResult
-    public func otherSymbol(_ other: String) -> LogLevelSymbolBuilder {
-        logLevelSymbols.other = other
-        return self
-    }
-    
-    public func build() -> LogLevelSymbols {
-        return logLevelSymbols
     }
 }
