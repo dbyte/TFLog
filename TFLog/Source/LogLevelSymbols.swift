@@ -42,8 +42,10 @@ public struct LogLevelSymbols {
 public class LogLevelSymbolBuilder {
     
     private var logLevelSymbols: LogLevelSymbols
+    private let config: LogConfiguration
     
     public init(forConfiguration config: LogConfiguration) {
+        self.config = config
         logLevelSymbols = config.logLevelSymbols
     }
     
@@ -81,6 +83,12 @@ public class LogLevelSymbolBuilder {
     public func setOther(_ other: String) -> LogLevelSymbolBuilder {
         logLevelSymbols.other = other
         return self
+    }
+    
+    @discardableResult
+    public func buildAndReplace() -> LogLevelSymbols {
+        config.replaceSymbols(with: logLevelSymbols)
+        return logLevelSymbols
     }
     
     public func build() -> LogLevelSymbols {
