@@ -104,6 +104,14 @@ internal extension Logger {
         #endif
     }
     
+    func configure(with configuration: LogConfiguration) {
+        self.configuration = configuration
+    }
+    
+    func getConfiguration() -> LogConfiguration {
+        return configuration
+    }
+    
 }
 
 // MARK: - Private helpers
@@ -112,6 +120,8 @@ private extension Logger {
     
     private func getFinalOutput() -> String {
         var final: String
+        
+        // Log handling
         
         switch(header, dataString) {
         case let (header, dataString) where !header.isEmpty && dataString.isEmpty:
@@ -133,6 +143,8 @@ private extension Logger {
             final = ""
         }
         
+        // Option handling
+        
         switch option {
         case .newLine:
             final += "\n"
@@ -143,6 +155,8 @@ private extension Logger {
         default:
             break
         }
+        
+        // Result
         
         return final.removeExtraSpaces()
     }

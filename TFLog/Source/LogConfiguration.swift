@@ -6,7 +6,7 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-// MARK: Configuration for the logger
+// MARK: Configuration for logger
 
 /// Holds configuration data for the logger.
 ///
@@ -22,12 +22,17 @@ public class LogConfiguration {
     
     // MARK: - Properties/Init
     
-    private(set) var isLoggingActive: Bool
-    private(set) var logLevelSymbols: LogLevelSymbols
+    public private(set) var isLoggingActive: Bool
+    public private(set) var logLevelSymbols: LogLevelSymbols
     
     public init() {
         self.isLoggingActive = true // logging is active by default
         self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
+    }
+    
+    /// Creates a new logger with the framework's default configuration or a injected configuration.
+    public static func createLogger(configuration: LogConfiguration = LogConfiguration()) -> LogInterface {
+        return Logger(configuration: configuration)
     }
 }
 
