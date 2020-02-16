@@ -1,28 +1,13 @@
 //
-//  Option.swift
+//  Options.swift
 //  TFLog
 //
 //  Created by Tammo on 15.01.20.
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-import Foundation
-
-public struct Option {
-    
-    public enum Cat: String, CaseIterable {
-        
-        case error = "📕"
-        case warning = "📙"
-        case success = "📗"
-        case action = "📘"
-        case canceled = "📓"
-        case other = "📔"
-    }
-
-    internal enum Common {
-        
-        case newLine
-        case verticalDivider
-    }
+/// Internal logging options
+internal enum Options {
+    case newLine
+    case verticalDivider
 }
