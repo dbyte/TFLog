@@ -66,7 +66,7 @@ public protocol LogInterface {
     /// Logging: Add a vertical divider below last line.
     func verticalDivider()
     
-    /// Injects a logger configuration into the logger object.
+    /// Injects a logger configuration into a existing logger object.
     func configure(with configuration: LogConfiguration)
     
     /// Gets current logger configuration object.
@@ -76,14 +76,24 @@ public protocol LogInterface {
 // MARK: - Logging Strategy
 
 /// Consumers must conform to this protocol to inherit its logging functionality.
+/// There are different ways to get the logger working in your subsystem.
+///
+/// 1. To get default logging functionalities right away, just conform your types to this protocol.
+///
+/// 2. If you need one custom configuration for your whole module, you would conform to this protocol
+/// in a new protocol which then defines/sets the `logger` variable and does some configuration on it.
+///
+/// 3. If you need a special configuration within a single type which conforms to `Logging`, you just
+/// place a definition  `var logger: Logging` inside that type (which actually overwrites
+/// the default computed value in the protocol's extension) and configure it with the values of your needs.
 public protocol Logging {
     
     /// Encapsulates functionality of the logging utility.
     ///
-    /// To change the default logger implementation for a certain type only, implement var directly
-    /// in the consuming class and initialize with your concrete logger class.
-    /// To switch the implementation for _all_ consumers, change the computed concrete logger in the
-    /// extension of this protocol.
+    /// To change the default logger implementation for a certain type only, implement `logger` var directly
+    /// in the consuming class and initialize with your custom logger object.
+    /// To switch the implementation for _all_ consumers, change the computation of the concrete logger in the
+    /// extension of this protocol by inheriting from it in a new protocol.
     var logger: LogInterface { get }
 }
 
@@ -92,7 +102,8 @@ extension Logging {
     /// Encapsulates functionality of the logging utility.
     ///
     /// Its computation sets the default logger implementation (which in turn must conform to `LogInterface`).
-    /// If consumers need some different implementation, change out the computed concrete logger here.
+    /// If consumers need some different implementation, change out the computed concrete logger
+    /// by inheriting from this protocol in a new protocol.
     public var logger: LogInterface { return Logger(configuration: LogConfiguration()) }
     
     /*

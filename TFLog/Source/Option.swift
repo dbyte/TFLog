@@ -6,7 +6,7 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-/// Internal logging options
+/// Some common logging options
 internal enum Options {
     case newLine
     case verticalDivider

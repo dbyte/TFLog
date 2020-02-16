@@ -10,8 +10,8 @@
 
 /// Logger Implementation
 ///
-/// Wrapper for Swift.print. Provides simple logging functionality.
-internal class Logger: LogInterface {
+/// Wrapper for Swift.print. Provides simple console logging functionality.
+public class Logger: LogInterface {
     
     // MARK: - Properties/Init
     
@@ -22,7 +22,7 @@ internal class Logger: LogInterface {
     private var logLevelSymbol: String
     private var option: Options?
     
-    internal required init(configuration: LogConfiguration) {
+    public required init(configuration: LogConfiguration) {
         self.configuration = configuration
         header = ""
         dataString = ""
@@ -34,7 +34,7 @@ internal class Logger: LogInterface {
 
 // MARK: - Methods
 
-internal extension Logger {
+public extension Logger {
     
     func log(_ header: String?) {
         log(header, data: nil, lev: nil)

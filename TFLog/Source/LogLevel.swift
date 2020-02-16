@@ -10,8 +10,7 @@
 
 /// Log levels
 ///
-/// You can replace the unicode symbols by using `LogLevelSymbolBuilder` followed by injection
-/// into instance method `LogConfiguration.replaceSymbols(:)`
+/// You can replace the unicode symbols by using `LogConfiguration.replaceLogLevelSymbols()` .
 /// - See also: `LogLevelSymbolBuilder`
 public enum LogLevel: String, CaseIterable {
     
