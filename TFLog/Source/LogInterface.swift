@@ -76,7 +76,7 @@ public protocol LogInterface {
 // MARK: - Logging Strategy
 
 /// Consumers must conform to this protocol to inherit its logging functionality.
-/// There are different ways to get the logger working in your subsystem.
+/// There are different ways to get the logger working in your module.
 ///
 /// 1. To get default logging functionalities right away, just conform your types to this protocol.
 ///
@@ -84,7 +84,7 @@ public protocol LogInterface {
 /// in a new protocol which then defines/sets the `logger` variable and does some configuration on it.
 ///
 /// 3. If you need a special configuration within a single type which conforms to `Logging`, you just
-/// place a definition  `var logger: Logging` inside that type (which actually overwrites
+/// place a definition  `var logger: Logging` inside that type (which actually overrides
 /// the default computed value in the protocol's extension) and configure it with the values of your needs.
 public protocol Logging {
     
@@ -104,7 +104,7 @@ extension Logging {
     /// Its computation sets the default logger implementation (which in turn must conform to `LogInterface`).
     /// If consumers need some different implementation, change out the computed concrete logger
     /// by inheriting from this protocol in a new protocol.
-    public var logger: LogInterface { return Logger(configuration: LogConfiguration()) }
+    internal var logger: LogInterface { return Logger(configuration: LogConfiguration()) }
     
     /*
     Below code would also work, being very convenient, but causes all log methods to be
