@@ -69,6 +69,10 @@ public protocol LogInterface {
 /// Consumers must conform to this protocol to inherit its logging functionality.
 public protocol Logging {
     
+    /// Logger configuration. Falls back to default implemented logger settings if you don't provide
+    /// your own settings in the conforming type.
+    var loggerConfiguration: LogConfiguration { get }
+    
     /// Encapsulates functionality of the logging utility.
     ///
     /// To change the default logger implementation for a certain type only, implement var directly
@@ -80,11 +84,14 @@ public protocol Logging {
 
 extension Logging {
     
+    /// Sets the logger's default configuration if not overriden in the conforming type.
+    public var loggerConfiguration: LogConfiguration { return LogConfiguration() }
+    
     /// Encapsulates functionality of the logging utility.
     ///
     /// Its computation sets the default logger implementation (which in turn must conform to `LogInterface`).
     /// If consumers need some different implementation, change out the computed concrete logger here.
-    public var logger: LogInterface { return Logger() }
+    public var logger: LogInterface { return Logger(configuration: loggerConfiguration) }
 
     /*
     Below code would also work, being very convenient, but causes all log methods to be

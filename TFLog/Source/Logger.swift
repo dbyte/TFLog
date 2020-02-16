@@ -6,6 +6,25 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
+public class LogConfiguration {
+    
+    // MARK: - Properties/Init
+    
+    private(set) var logLevelSymbols: LogLevelSymbols
+    
+    public init() {
+        self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
+    }
+    
+    // MARK: - Methods
+    
+    // External configuration: symbols can be built via LogLevelSymbolBuilder and then are injected here.
+    public func changeSymbols(with symbols: LogLevelSymbols) {
+        self.logLevelSymbols = symbols
+    }
+
+}
+
 // MARK: - Logger Implementation
 
 /// Logger Implementation
@@ -18,15 +37,17 @@ internal class Logger: LogInterface {
     private var header: String
     private var dataString: String
     private var timestampString: String
-    private var categoryEmoticon: String
+    private var logLevelSymbol: String
     private var option: Options?
+    private var configuration: LogConfiguration
     
-    internal init() {
+    internal init(configuration: LogConfiguration) {
         header = ""
         dataString = ""
         timestampString = ""
-        categoryEmoticon = ""
+        logLevelSymbol = ""
         option = nil
+        self.configuration = configuration
     }
 }
 
@@ -71,7 +92,7 @@ internal extension Logger {
         timestampString = getTimestampString()
         
         // Get emoticon for error cat
-        categoryEmoticon = getCategoryEmoticon(lev: lev)
+        logLevelSymbol = getLogLevelSymbol(lev: lev)
         
         // Output
         print(getFinalOutput())
@@ -105,18 +126,18 @@ private extension Logger {
         switch(header, dataString) {
         case let (header, dataString) where !header.isEmpty && dataString.isEmpty:
             // Only "header" parameter is set, no data
-            final = timestampString + " " + categoryEmoticon + " " + header
+            final = timestampString + " " + logLevelSymbol + " " + header
             
         case let (header, dataString) where header.isEmpty && !dataString.isEmpty:
             // Only dataString is set, no header
-            final = timestampString + " " + categoryEmoticon + "\n" + dataString
+            final = timestampString + " " + logLevelSymbol + "\n" + dataString
             
         case let (header, dataString) where !header.isEmpty && !dataString.isEmpty:
             // Both header and dataString are set
-            final =  timestampString + " " + categoryEmoticon + " " + header + "\n" + dataString
+            final =  timestampString + " " + logLevelSymbol + " " + header + "\n" + dataString
             
-        case let (header, dataString) where header.isEmpty && dataString.isEmpty && !categoryEmoticon.isEmpty:
-            final = categoryEmoticon
+        case let (header, dataString) where header.isEmpty && dataString.isEmpty && !logLevelSymbol.isEmpty:
+            final = logLevelSymbol
             
         default:
             final = ""
@@ -141,8 +162,8 @@ private extension Logger {
         return "▶️" + String(describing: data) + "◀️"
     }
     
-    private func getCategoryEmoticon(lev: LogLevel?) -> String {
-        return lev?.rawValue ?? ""
+    private func getLogLevelSymbol(lev: LogLevel?) -> String {
+        return lev?.symbol(from: configuration.logLevelSymbols) ?? ""
     }
     
     private func getTimestampString() -> String {
