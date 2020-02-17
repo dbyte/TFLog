@@ -20,15 +20,13 @@ public class LogConfiguration {
     public private(set) var isLoggingActive: Bool
     internal private(set) var isTimestampIncluded: Bool
     internal private(set) var subsystemID: String?
-    internal private(set) var category: String
     internal private(set) var logLevelSymbols: LogLevelSymbols
     
     public init() {
         self.isLoggingActive = true // logging is active by default
         self.isTimestampIncluded = false
         self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
-        self.subsystemID = Bundle.main.bundleIdentifier
-        self.category = ""
+        self.subsystemID = ""
     }
 }
 
@@ -45,24 +43,20 @@ internal extension LogConfiguration {
 
 public extension LogConfiguration {
     
-    final func activateLogging(_ isLoggingActive: Bool) {
+    func activateLogging(_ isLoggingActive: Bool) {
         self.isLoggingActive = isLoggingActive
     }
     
-    final func includeTimestamp(_ isTimestampIncluded: Bool) {
+    func includeTimestamp(_ isTimestampIncluded: Bool) {
         self.isTimestampIncluded = isTimestampIncluded
     }
     
-    final func subsystemID(_ subsystemID: String) {
+    func setSubsystemID(_ subsystemID: String) {
         self.subsystemID = subsystemID
     }
     
-    final func category(_ category: String) {
-        self.category = category
-    }
-    
     /// Unicode log level symbols can be built and/or replaced here.
-    final func replaceLogLevelSymbols() -> LogLevelSymbolBuilder {
+    func replaceLogLevelSymbols() -> LogLevelSymbolBuilder {
         return LogLevelSymbolBuilder(forConfiguration: self)
     }
 }

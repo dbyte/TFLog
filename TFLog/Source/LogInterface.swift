@@ -17,7 +17,7 @@ public protocol LogInterface {
     */
     
     /// Required to configure the logger.
-    init(configuration: LogConfiguration)
+    init(configuration: LogConfiguration, category: String)
     
     /// Logging.
     ///
@@ -95,6 +95,9 @@ public protocol Logging {
     /// To switch the implementation for _all_ consumers, change the computation of the concrete logger in the
     /// extension of this protocol by inheriting from it in a new protocol.
     var logger: LogInterface { get }
+    
+    /// :nodoc:
+    var logCategory: String { get }
 }
 
 extension Logging {
@@ -104,20 +107,8 @@ extension Logging {
     /// Its computation sets the default logger implementation (which in turn must conform to `LogInterface`).
     /// If consumers need some different implementation, change out the computed concrete logger
     /// by inheriting from this protocol in a new protocol.
-    internal var logger: LogInterface { return Logger(configuration: LogConfiguration()) }
+    internal var logger: LogInterface { return Logger(configuration: LogConfiguration(), category: logCategory) }
     
-    /*
-    Below code would also work, being very convenient, but causes all log methods to be
-    first citizens in the consumers which would not conform to SRP:
-     
-    public func log(
-        _ header: String? = "",
-        data: Any? = nil,
-        cat: Option.Cat? = nil,
-        file: StaticString? = #file,
-        function: StaticString? = #function) {
-        
-            logger.log(header, data: data, cat: cat)
-        }
-    */
+    /// :nodoc:
+    public var logCategory: String { return "\(Self.self)" }
 }

@@ -16,14 +16,16 @@ public class Logger: LogInterface {
     // MARK: - Properties/Init
     
     private var configuration: LogConfiguration
+    private var category: String
     private var header: String
     private var dataString: String
     private var timestampString: String
     private var logLevelSymbol: String
     private var option: Options?
     
-    public required init(configuration: LogConfiguration) {
+    public required init(configuration: LogConfiguration, category: String) {
         self.configuration = configuration
+        self.category = category
         header = ""
         dataString = ""
         timestampString = ""
@@ -83,7 +85,7 @@ public extension Logger {
         osLog.setup(
             message: getFinalOutput(),
             subsystem: configuration.subsystemID,
-            category: configuration.category,
+            category: category,
             lev: lev,
             isPublic: true)
         osLog.log()
@@ -102,7 +104,7 @@ public extension Logger {
         osLog.setup(
             message: getFinalOutput(),
             subsystem: configuration.subsystemID,
-            category: configuration.category,
+            category: category,
             isPublic: true)
         osLog.log()
         #endif
@@ -119,7 +121,7 @@ public extension Logger {
         osLog.setup(
             message: getFinalOutput(),
             subsystem: configuration.subsystemID,
-            category: configuration.category,
+            category: category,
             isPublic: true)
         osLog.log()
         #endif

@@ -15,11 +15,11 @@ internal class LogAdapterForOSLog {
     
     // MARK: - Properties/Init
     
-    private var osLog: OSLog = OSLog(subsystem: "", category: "")
-    private var message: String = ""
-    private var subsystem: String = ""
-    private var category: String = ""
-    private var type: OSLogType = .default
+    private var osLog = OSLog(subsystem: "", category: "")
+    private var message = ""
+    private var subsystem = ""
+    private var category = ""
+    private var type = OSLogType.default
     private var publicArg: StaticString = ""
     
     init() {}
