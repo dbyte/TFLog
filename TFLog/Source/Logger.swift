@@ -79,8 +79,15 @@ public extension Logger {
         logLevelSymbol = getLogLevelSymbol(lev: lev)
         
         // Output
-        print(getFinalOutput())
-        //print(file, function, finalOutput)
+        let osLog = LogAdapterForOSLog()
+        osLog.setup(
+            message: getFinalOutput(),
+            subsystem: configuration.subsystemID,
+            category: configuration.category,
+            lev: lev,
+            isPublic: true)
+        osLog.log()
+
         #endif
     }
     
@@ -90,17 +97,31 @@ public extension Logger {
         guard configuration.isLoggingActive else { return }
         
         option = Options.newLine
-        print(getFinalOutput())
+        
+        let osLog = LogAdapterForOSLog()
+        osLog.setup(
+            message: getFinalOutput(),
+            subsystem: configuration.subsystemID,
+            category: configuration.category,
+            isPublic: true)
+        osLog.log()
         #endif
     }
     
     func verticalDivider() {
         #if CUSTOMLOG
-        // Early return when switched off via configuration.
+        // Early return when logging was switched off via configuration.
         guard configuration.isLoggingActive else { return }
         
         option = Options.verticalDivider
-        print(getFinalOutput())
+        
+        let osLog = LogAdapterForOSLog()
+        osLog.setup(
+            message: getFinalOutput(),
+            subsystem: configuration.subsystemID,
+            category: configuration.category,
+            isPublic: true)
+        osLog.log()
         #endif
     }
     
@@ -171,6 +192,7 @@ private extension Logger {
     }
     
     private func getTimestampString() -> String {
+        guard configuration.isTimestampIncluded else { return "" }
         let formatOptions: ISO8601DateFormatter.Options =
             [.withYear,
              .withMonth,
