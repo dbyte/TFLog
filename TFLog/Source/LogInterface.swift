@@ -84,29 +84,32 @@ public protocol LogInterface {
 /// in a new protocol which then defines/sets the `logger` variable and does some configuration on it.
 ///
 /// 3. If you need a special configuration within a single type which conforms to `Logging`, you just
-/// place a definition  `var logger: Logging` inside that type (which actually overrides
-/// the default computed value in the protocol's extension) and configure it with the values of your needs.
+/// place the definition `var logger: Logging` inside that type. That will actually override
+/// the default computed value in the protocol's extension. Configure it with the values of your needs.
 public protocol Logging {
     
     /// Encapsulates functionality of the logging utility.
+    /// `logger` computation sets the default logger implementation (which in turn must conform to `LogInterface`).
+    /// If consumers need some different implementation, change out the computed concrete logger
+    /// by inheriting from this protocol in a new protocol.
     ///
     /// To change the default logger implementation for a certain type only, implement `logger` var directly
-    /// in the consuming class and initialize with your custom logger object.
+    /// in the consuming class/struct and initialize with your custom logger object.
     /// To switch the implementation for _all_ consumers, change the computation of the concrete logger in the
     /// extension of this protocol by inheriting from it in a new protocol.
     var logger: LogInterface { get }
     
-    /// :nodoc:
+    /// The log category. Will be adapted to OSLog `Category` when using OSLog.
+    ///
+    /// The default computation sets this var to the consumer's type name.
+    /// To set a custom category, implement `logCategory` var directly in your consuming class/struct
+    /// and set it to a value of your needs while initializing.
     var logCategory: String { get }
 }
 
 extension Logging {
     
-    /// Encapsulates functionality of the logging utility.
-    ///
-    /// Its computation sets the default logger implementation (which in turn must conform to `LogInterface`).
-    /// If consumers need some different implementation, change out the computed concrete logger
-    /// by inheriting from this protocol in a new protocol.
+    /// Encapsulates functionality of the logging utility for a consumer of this interface.
     internal var logger: LogInterface { return Logger(configuration: LogConfiguration(), category: logCategory) }
     
     /// :nodoc:
