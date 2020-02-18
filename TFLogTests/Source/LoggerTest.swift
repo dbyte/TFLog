@@ -13,13 +13,11 @@ class LoggerTest: XCTestCase {
     
     // MARK: - Setup
     
-    var sut: Logger!
+    var sut: LogInterface!
 
     override func setUp() {
         super.setUp()
-        let config = LogConfigurationStub().concreteLogConfiguration
-        config.setLogProvider(LogProviderMock())
-        sut = Logger(configuration: config, category: "LoggerTest")
+        sut = LoggerStub().activatedAndProviderMock()
     }
 
     override func tearDown() {
@@ -36,35 +34,26 @@ class LoggerTest: XCTestCase {
     func testSetConfigurationShouldReplaceConfiguration() {
         // Note we don't test class "Configuration" itself. We only test the proper work of method
         // "setConfiguration" within the sut.
+        let originalConfig = LogConfigurationStub().withActivatedLoggingAndProviderMock()
+        sut = Logger(configuration: originalConfig, category: "")
         
-        let originalConfig = LogConfigurationStub().concreteLogConfiguration
-        originalConfig.activateLogging(true)
-        sut = Logger(configuration: originalConfig, category: "LoggerTest")
-        
-        let newConfig = LogConfigurationStub().concreteLogConfiguration
-        newConfig.activateLogging(false)
-        
+        let newConfig = LogConfigurationStub().withDeactivatedLoggingAndProviderMock()
         sut.setConfiguration(with: newConfig)
-        
-        XCTAssertEqual(originalConfig.getIsLoggingActive(), true, "Check stub! Stub property must not be static.")
-        XCTAssertEqual(newConfig.getIsLoggingActive(), false,  "Check stub! Stub property must not be static.")
         
         XCTAssertNotEqual(sut.getConfiguration().getIsLoggingActive(), originalConfig.getIsLoggingActive())
     }
     
     func testShouldNotLogIfLoggingIsDeactivated() {
-        let providerMock = LogProviderMock()
-        var aExpectation: XCTestExpectation
-        
-        let currentLoggerConfig = sut.getConfiguration()
-        currentLoggerConfig.activateLogging(false) // switch off logger
-        currentLoggerConfig.setLogProvider(providerMock)
+        sut = LoggerStub().deactivatedAndProviderMock()
+        let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         func getNewExpectation() -> XCTestExpectation {
             let expectation = self.expectation(description: "LogExecutionMethodWasCalled")
             expectation.isInverted = true // invert!
             return expectation
         }
+        
+        var aExpectation: XCTestExpectation
         
         aExpectation = getNewExpectation()
         providerMock.setExpectation(aExpectation)
@@ -83,16 +72,14 @@ class LoggerTest: XCTestCase {
     }
     
     func testLogShouldComposeValidMessage() {
-        let providerMock = LogProviderMock()
-        var aExpectation: XCTestExpectation
-        
-        let currentLoggerConfig = sut.getConfiguration()
-        currentLoggerConfig.activateLogging(true)
-        currentLoggerConfig.setLogProvider(providerMock)
+        sut = LoggerStub().activatedAndProviderMock()
+        let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         func getNewExpectation() -> XCTestExpectation {
             return self.expectation(description: "LogExecutionMethodWasCalled")
         }
+        
+        var aExpectation: XCTestExpectation
         
         aExpectation = getNewExpectation()
         providerMock.setExpectation(aExpectation)
@@ -135,26 +122,17 @@ class LoggerTest: XCTestCase {
         
         aExpectation = getNewExpectation()
         providerMock.setExpectation(aExpectation)
-        sut.log(lev: .warning)
-        waitForExpectations(timeout: 1, handler: nil)
-        XCTAssertEqual(providerMock.message, "📙")
-        XCTAssertEqual(providerMock.logLevel, .warning)
-        
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
         sut.log("")
         waitForExpectations(timeout: 1, handler: nil)
         XCTAssertEqual(providerMock.message, "")
     }
     
     func testNewLine() {
-        let providerMock = LogProviderMock()
+        sut = LoggerStub().activatedAndProviderMock()
+        let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
+        
         let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
         aExpectation.expectedFulfillmentCount = 2
-        
-        let currentLoggerConfig = sut.getConfiguration()
-        currentLoggerConfig.activateLogging(true)
-        currentLoggerConfig.setLogProvider(providerMock)
         
         providerMock.setExpectation(aExpectation)
         sut.log("Log_HeaderOnly")
@@ -164,13 +142,11 @@ class LoggerTest: XCTestCase {
     }
     
     func testVerticalDivider() {
-        let providerMock = LogProviderMock()
+        sut = LoggerStub().activatedAndProviderMock()
+        let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
+        
         let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
         aExpectation.expectedFulfillmentCount = 2
-        
-        let currentLoggerConfig = sut.getConfiguration()
-        currentLoggerConfig.activateLogging(true)
-        currentLoggerConfig.setLogProvider(providerMock)
         
         providerMock.setExpectation(aExpectation)
         sut.log("Log_HeaderOnly")
@@ -180,13 +156,13 @@ class LoggerTest: XCTestCase {
     }
     
     func testShouldApplyTimestampIfActivated() {
-        let providerMock = LogProviderMock()
-        let currentLoggerConfig = sut.getConfiguration()
-        currentLoggerConfig.activateLogging(true)
-        currentLoggerConfig.setLogProvider(providerMock)
-        currentLoggerConfig.includeTimestamp(true) // activate timestamp
+        sut = LoggerStub().activatedAndProviderMock()
+        sut.getConfiguration().includeTimestamp(true) // activate timestamp
+        
+        let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         // Regex pattern for the ISO8601 formatted timestamp.
+        // swiftlint:disable:next force_try
         let regex = try! NSRegularExpression(
             pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})[+-](\\d{2})\\:(\\d{2})")
         
