@@ -11,7 +11,7 @@ import os.log
 // MARK: Adapter for OSLog
 
 /// Adapter: Using OSLog infrastructure
-public class OSLogProvider: LogProvider {
+internal class OSLogProvider: LogProvider {
     
     // MARK: - Properties/Init
     
@@ -80,11 +80,6 @@ private extension OSLogProvider {
 // MARK: - Internal Methods
 
 internal extension OSLogProvider {
-}
-
-// MARK: - Public Methods
-
-public extension OSLogProvider {
     
     /// Setup OSLog adapter to be prepared for logging.
     func setup(

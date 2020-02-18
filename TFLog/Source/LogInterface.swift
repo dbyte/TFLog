@@ -105,6 +105,8 @@ public protocol Logging {
     /// To set a custom category, implement `logCategory` var directly in your consuming class/struct
     /// and set it to a value of your needs while initializing.
     var logCategory: String { get }
+    
+    static func logCreateLogger(configuration: LogConfiguration, category: String) -> LogInterface
 }
 
 extension Logging {
@@ -112,6 +114,10 @@ extension Logging {
     /// Encapsulates functionality of the logging utility for a consumer of this interface.
     internal var logger: LogInterface { return Logger(configuration: LogConfiguration(), category: logCategory) }
     
-    /// :nodoc:
+    /// The log category.
     public var logCategory: String { return "\(Self.self)" }
+    
+    public static func logCreateLogger(configuration: LogConfiguration, category: String) -> LogInterface {
+        Logger(configuration: configuration, category: category) as LogInterface
+    }
 }

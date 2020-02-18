@@ -62,7 +62,7 @@ public extension LogConfiguration {
     }
     
     /// Unicode log level symbols can be built and/or replaced here.
-    func replaceLogLevelSymbols() -> LogLevelSymbolBuilder {
+    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable {
         return LogLevelSymbolBuilder(forConfiguration: self)
     }
 }

@@ -9,7 +9,7 @@
 // MARK: Adapter for console
 
 /// Adapter: Using internal console as log provider
-public class ConsoleLogProvider: LogProvider {
+internal class ConsoleLogProvider: LogProvider {
     
     // MARK: - Properties/Init
     
@@ -22,9 +22,9 @@ public class ConsoleLogProvider: LogProvider {
     public init() {}
 }
     
-    // MARK: - Public Methods
+    // MARK: - Internal Methods
 
-public extension ConsoleLogProvider {
+internal extension ConsoleLogProvider {
     
     func executeLog() {
         let category = self.category ?? ""

@@ -11,7 +11,7 @@
 /// Logger Implementation
 ///
 /// Main Logger. Provides logging functionality by using a logging provider such as OSLog or Console.
-public class Logger: LogInterface {
+internal class Logger: LogInterface {
     
     // MARK: - Properties/Init
     
@@ -23,7 +23,7 @@ public class Logger: LogInterface {
     private var logLevelSymbol: String
     private var option: Options?
     
-    public required init(configuration: LogConfiguration, category: String) {
+    internal required init(configuration: LogConfiguration, category: String) {
         self.configuration = configuration
         self.category = category
         header = ""
@@ -36,7 +36,7 @@ public class Logger: LogInterface {
 
 // MARK: - Methods
 
-public extension Logger {
+internal extension Logger {
     
     func log(_ header: String?) {
         log(header, data: nil, lev: nil)
