@@ -104,7 +104,7 @@ internal extension Logger {
         #endif
     }
     
-    func configure(with configuration: LogConfigurable) {
+    func setConfiguration(with configuration: LogConfigurable) {
         self.configuration = configuration
     }
     
@@ -134,20 +134,24 @@ private extension Logger {
     private func getFinalOutput() -> String {
         var final: String
         
-        // Log handling
+        // Concat log message text
+        
+        let timestampStringAndWhitespace = configuration.getIsTimestampIncluded() ? timestampString + " " : ""
+        let logLevelSymbolAndNewline = self.logLevelSymbol.isEmpty ? "" : logLevelSymbol + "\n"
+        let logLevelSymbolAndWhitespace = self.logLevelSymbol.isEmpty ? "" : logLevelSymbol + " "
         
         switch(header, dataString) {
         case let (header, dataString) where !header.isEmpty && dataString.isEmpty:
             // Only "header" parameter is set, no data
-            final = timestampString + " " + logLevelSymbol + " " + header
+            final = timestampStringAndWhitespace + logLevelSymbolAndWhitespace + header
             
         case let (header, dataString) where header.isEmpty && !dataString.isEmpty:
             // Only dataString is set, no header
-            final = timestampString + " " + logLevelSymbol + "\n" + dataString
+            final = timestampStringAndWhitespace + logLevelSymbolAndNewline + dataString
             
         case let (header, dataString) where !header.isEmpty && !dataString.isEmpty:
             // Both header and dataString are set
-            final =  timestampString + " " + logLevelSymbol + " " + header + "\n" + dataString
+            final = timestampStringAndWhitespace + logLevelSymbolAndWhitespace + header + "\n" + dataString
             
         case let (header, dataString) where header.isEmpty && dataString.isEmpty && !logLevelSymbol.isEmpty:
             final = logLevelSymbol
