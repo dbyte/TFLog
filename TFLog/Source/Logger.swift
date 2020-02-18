@@ -58,27 +58,33 @@ internal extension Logger {
         log(nil, data: data, lev: lev)
     }
     
-    // Print debug infos to console.
+    // Main log behaviour.
     func log(_ header: String? = "", data: Any? = nil, lev: LogLevel?) {
         
         #if CUSTOMLOG
-        // Early return when switched off via configuration.
-        guard configuration.getIsLoggingActive() else { return }
-        
-        // Sanitize incoming values
-        self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
-        
-        // Try casting data to string
-        dataString = getDataString(data: data)
-        
-        // Get timestamp
-        timestampString = getTimestampString()
-        
-        // Get emoticon for error cat
-        logLevelSymbol = getLogLevelSymbol(lev: lev)
-        
-        // Output
-        execute(logLevel: lev)
+        // Pipeline value to background.
+        // Tried for weak/unowned self capturing here, but won't work: self gets lost.
+        // Did some deinit tests, seems there is no memory leak.
+        DispatchQueue.global(qos: .background).async {
+            
+            // Early return when switched off via configuration.
+            guard self.configuration.getIsLoggingActive() else { return }
+            
+            // Sanitize incoming values
+            self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
+            
+            // Try casting data to string
+            self.dataString = self.getDataString(data: data)
+            
+            // Get timestamp
+            self.timestampString = self.getTimestampString()
+            
+            // Get emoticon for error cat
+            self.logLevelSymbol = self.getLogLevelSymbol(lev: lev)
+            
+            // Output
+            self.execute(logLevel: lev)
+        }
         #endif
     }
     
