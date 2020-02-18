@@ -62,9 +62,9 @@ internal extension Logger {
     func log(_ header: String? = "", data: Any? = nil, lev: LogLevel?) {
         
         #if CUSTOMLOG
-        // Pipeline value to background.
+        // Pipeline core logging to background.
         // Tried for weak/unowned self capturing here, but won't work: self gets lost.
-        // Did some deinit tests, seems there is no memory leak.
+        // Did init/deinit tests by manually counting instances up & down; seems there is no memory leak.
         DispatchQueue.global(qos: .background).async {
             
             // Early return when switched off via configuration.
