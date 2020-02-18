@@ -14,10 +14,7 @@ internal class ConsoleLogProvider: LogProvider {
     // MARK: - Properties/Init
     
     private var message: String?
-    private var subsystem: String?
     private var category: String?
-    private var logLevel: LogLevel?
-    private var isPublic: Bool?
     
     internal init() {}
 }
@@ -40,9 +37,6 @@ internal extension ConsoleLogProvider {
         isPublic: Bool?) {
         
         self.message = message
-        self.subsystem = subsystem
         self.category = category
-        self.logLevel = logLevel
-        self.isPublic = isPublic
     }
 }

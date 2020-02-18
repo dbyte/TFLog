@@ -17,7 +17,7 @@ public protocol LogInterface {
     */
     
     /// Required to configure the logger.
-    init(configuration: LogConfiguration, category: String)
+    init(configuration: LogConfigurable, category: String)
     
     /// Logging.
     ///
@@ -67,10 +67,10 @@ public protocol LogInterface {
     func verticalDivider()
     
     /// Injects a logger configuration into a existing logger object.
-    func configure(with configuration: LogConfiguration)
+    func configure(with configuration: LogConfigurable)
     
     /// Gets current logger configuration object.
-    func getConfiguration() -> LogConfiguration
+    func getConfiguration() -> LogConfigurable
 }
 
 // MARK: - Logging Strategy
@@ -105,8 +105,6 @@ public protocol Logging {
     /// To set a custom category, implement `logCategory` var directly in your consuming class/struct
     /// and set it to a value of your needs while initializing.
     var logCategory: String { get }
-    
-    static func logCreateLogger(configuration: LogConfiguration, category: String) -> LogInterface
 }
 
 extension Logging {
@@ -116,8 +114,4 @@ extension Logging {
     
     /// The log category.
     public var logCategory: String { return "\(Self.self)" }
-    
-    public static func logCreateLogger(configuration: LogConfiguration, category: String) -> LogInterface {
-        Logger(configuration: configuration, category: category) as LogInterface
-    }
 }

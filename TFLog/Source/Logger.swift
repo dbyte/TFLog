@@ -11,11 +11,11 @@
 /// Logger Implementation
 ///
 /// Main Logger. Provides logging functionality by using a logging provider such as OSLog or Console.
-internal class Logger: LogInterface {
+internal class Logger: LogInterface {    
     
     // MARK: - Properties/Init
     
-    private var configuration: LogConfiguration
+    private var configuration: LogConfigurable
     private var category: String
     private var header: String
     private var dataString: String
@@ -23,7 +23,7 @@ internal class Logger: LogInterface {
     private var logLevelSymbol: String
     private var option: Options?
     
-    internal required init(configuration: LogConfiguration, category: String) {
+    internal required init(configuration: LogConfigurable, category: String) {
         self.configuration = configuration
         self.category = category
         header = ""
@@ -63,7 +63,7 @@ internal extension Logger {
         
         #if CUSTOMLOG
         // Early return when switched off via configuration.
-        guard configuration.isLoggingActive else { return }
+        guard configuration.getIsLoggingActive() else { return }
         
         // Sanitize incoming values
         self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
@@ -85,7 +85,7 @@ internal extension Logger {
     func newLine() {
         #if CUSTOMLOG
         // Early return when switched off via configuration.
-        guard configuration.isLoggingActive else { return }
+        guard configuration.getIsLoggingActive() else { return }
         
         option = Options.newLine
         
@@ -96,7 +96,7 @@ internal extension Logger {
     func verticalDivider() {
         #if CUSTOMLOG
         // Early return when logging was switched off via configuration.
-        guard configuration.isLoggingActive else { return }
+        guard configuration.getIsLoggingActive() else { return }
         
         option = Options.verticalDivider
         
@@ -104,11 +104,11 @@ internal extension Logger {
         #endif
     }
     
-    func configure(with configuration: LogConfiguration) {
+    func configure(with configuration: LogConfigurable) {
         self.configuration = configuration
     }
     
-    func getConfiguration() -> LogConfiguration {
+    func getConfiguration() -> LogConfigurable {
         return configuration
     }
     
@@ -119,11 +119,11 @@ internal extension Logger {
 private extension Logger {
     
     private func execute(logLevel: LogLevel? = nil) {
-        let provider = configuration.logProvider
+        let provider = configuration.getLogProvider()
         
         provider.setup(
             message: getFinalOutput(),
-            subsystem: configuration.subsystemID,
+            subsystem: configuration.getSubsystemID(),
             category: category,
             logLevel: logLevel,
             isPublic: true)
@@ -180,11 +180,11 @@ private extension Logger {
     }
     
     private func getLogLevelSymbol(lev: LogLevel?) -> String {
-        return lev?.symbol(from: configuration.logLevelSymbols) ?? ""
+        return lev?.symbol(from: configuration.getLogLevelSymbols()) ?? ""
     }
     
     private func getTimestampString() -> String {
-        guard configuration.isTimestampIncluded else { return "" }
+        guard configuration.getIsTimestampIncluded() else { return "" }
         let formatOptions: ISO8601DateFormatter.Options =
             [.withYear,
              .withMonth,

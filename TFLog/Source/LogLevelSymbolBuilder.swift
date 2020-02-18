@@ -58,12 +58,12 @@ public protocol LogLevelSymbolBuildable {
 /// Log level unicode symbols customization.
 internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {
     
-    private var logLevelSymbols: LogLevelSymbols
+    private var logLevelSymbols: LogLevelSymbolsInterface
     private weak var config: LogConfiguration?
     
     init(forConfiguration config: LogConfiguration) {
         self.config = config
-        logLevelSymbols = config.logLevelSymbols
+        logLevelSymbols = config.getLogLevelSymbols()
     }
     
     func setError(_ error: String) -> LogLevelSymbolBuildable {

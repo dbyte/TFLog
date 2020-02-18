@@ -22,7 +22,7 @@ public enum LogLevel: String, CaseIterable {
     case other
     
     // It's possible for consumers to replace the corresponding unicode symbols.
-    internal func symbol(from symbols: LogLevelSymbols) -> String {
+    internal func symbol(from symbols: LogLevelSymbolsInterface) -> String {
         var symbol: String {
             
             switch self {
