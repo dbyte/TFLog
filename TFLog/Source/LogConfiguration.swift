@@ -28,9 +28,6 @@ public protocol LogConfigurable {
     ///
     func setSubsystemID(_ subsystemID: String)
     
-    /// Unicode log level symbols can be built and/or replaced here.
-    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable
-    
     ///
     func getIsLoggingActive() -> Bool
     
@@ -39,6 +36,9 @@ public protocol LogConfigurable {
     
     ///
     func getLogLevelSymbols() -> LogLevelSymbolsInterface
+    
+    /// Unicode log level symbols can be built and/or replaced here.
+    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable
     
     ///
     func getIsTimestampIncluded() -> Bool
@@ -104,7 +104,7 @@ internal extension LogConfiguration {
     // Below are some funcs which need to conform to LogConfigurable. This is because we do not
     // want to expose the fields of this class to the protocol.
     
-    func getIsLoggingActive() -> Bool{
+    func getIsLoggingActive() -> Bool {
         return isLoggingActive
     }
     
