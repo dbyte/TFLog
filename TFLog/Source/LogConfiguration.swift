@@ -8,12 +8,18 @@
 
 import os.log
 
+// MARK: Interface for LogConfiguration
+
+///
+protocol LogConfigurable {
+}
+
 // MARK: Configuration for logger
 
 /// Holds configuration data for the logger.
 ///
 /// - See also: `Logging.configure`
-public class LogConfiguration {
+open class LogConfiguration: LogConfigurable {
     
     // MARK: - Properties/Init
     
@@ -30,6 +36,30 @@ public class LogConfiguration {
         self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
         self.subsystemID = ""
     }
+    
+    // MARK: - Open Methods
+    // Warning: Open methods cannot be overriden when they reside within extensions, so we leave them here!
+    
+    open func activateLogging(_ isLoggingActive: Bool) {
+        self.isLoggingActive = isLoggingActive
+    }
+    
+    open func setLogProvider(_ logProvider: LogProvider) {
+        self.logProvider = logProvider
+    }
+    
+    open func includeTimestamp(_ isTimestampIncluded: Bool) {
+        self.isTimestampIncluded = isTimestampIncluded
+    }
+    
+    open func setSubsystemID(_ subsystemID: String) {
+        self.subsystemID = subsystemID
+    }
+    
+    /// Unicode log level symbols can be built and/or replaced here.
+    open func replaceLogLevelSymbols() -> LogLevelSymbolBuildable {
+        return LogLevelSymbolBuilder(forConfiguration: self)
+    }
 }
 
 // MARK: - Internal Methods
@@ -38,31 +68,5 @@ internal extension LogConfiguration {
     
     func replaceSymbols(with symbols: LogLevelSymbols) {
         self.logLevelSymbols = symbols
-    }
-}
-
-// MARK: - Public Methods
-
-public extension LogConfiguration {
-    
-    func activateLogging(_ isLoggingActive: Bool) {
-        self.isLoggingActive = isLoggingActive
-    }
-    
-    func setLogProvider(_ logProvider: LogProvider) {
-        self.logProvider = logProvider
-    }
-    
-    func includeTimestamp(_ isTimestampIncluded: Bool) {
-        self.isTimestampIncluded = isTimestampIncluded
-    }
-    
-    func setSubsystemID(_ subsystemID: String) {
-        self.subsystemID = subsystemID
-    }
-    
-    /// Unicode log level symbols can be built and/or replaced here.
-    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable {
-        return LogLevelSymbolBuilder(forConfiguration: self)
     }
 }

@@ -22,7 +22,7 @@ internal class OSLogProvider: LogProvider {
     private var type = OSLogType.default
     private var publicArg: StaticString = ""
     
-    public init() {}
+    internal init() {}
 }
 
 // MARK: - Private Methods

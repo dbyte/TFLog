@@ -19,7 +19,7 @@ internal class ConsoleLogProvider: LogProvider {
     private var logLevel: LogLevel?
     private var isPublic: Bool?
     
-    public init() {}
+    internal init() {}
 }
     
     // MARK: - Internal Methods

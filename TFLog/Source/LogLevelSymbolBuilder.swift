@@ -14,27 +14,33 @@
 /// - See also: `LogConfiguration`, `LogLevelSymbolsInterface`
 public protocol LogLevelSymbolBuildable {
     
-    ///
+    /// Set _error_ prefix
+    /// - Parameter error: Sets a prefix for log level _error_ in form of unicode symbol or text
     @discardableResult
     func setError(_ error: String) -> LogLevelSymbolBuildable
     
-    ///
+    /// Set _warning_ prefix
+    /// - Parameter warning: Sets a prefix for log level _warning_ in form of unicode symbol or text
     @discardableResult
     func setWarning(_ warning: String) -> LogLevelSymbolBuildable
     
-    ///
+    /// Set _success_ prefix
+    /// - Parameter success: Sets a prefix for log level _success_ in form of unicode symbol or text
     @discardableResult
     func setSuccess(_ success: String) -> LogLevelSymbolBuildable
     
-    ///
+    /// Set _action_ prefix
+    /// - Parameter action: Sets a prefix for log level _action_ in form of unicode symbol or text
     @discardableResult
     func setAction(_ action: String) -> LogLevelSymbolBuildable
     
-    ///
+    /// Set _canceled_ prefix
+    /// - Parameter canceled: Sets a prefix for log level _canceled_ in form of unicode symbol or text
     @discardableResult
     func setCanceled(_ canceled: String) -> LogLevelSymbolBuildable
     
-    ///
+    /// Set _other_ prefix
+    /// - Parameter other: Sets a prefix for log level _other_ in form of unicode symbol or text
     @discardableResult
     func setOther(_ other: String) -> LogLevelSymbolBuildable
     
@@ -47,7 +53,7 @@ public protocol LogLevelSymbolBuildable {
     func build() -> LogLevelSymbolsInterface
 }
 
-// MARK: - Builder for replacing log level unicode symbols
+// MARK: - Builder implementation for replacing log level unicode symbols
 
 /// Log level unicode symbols customization.
 internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {

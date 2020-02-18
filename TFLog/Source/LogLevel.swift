@@ -8,7 +8,7 @@
 
 // MARK: Fixed log levels and their corresponding (unicode-) symbols
 
-/// Log levels
+/// Provided log levels.
 ///
 /// You can replace the unicode symbols by using `LogConfiguration.replaceLogLevelSymbols()` .
 /// - See also: `LogLevelSymbolBuilder`
