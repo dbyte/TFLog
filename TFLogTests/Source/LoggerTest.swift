@@ -11,7 +11,7 @@ import XCTest
 
 class LoggerTest: XCTestCase {
     
-    // MARK: - Setup
+    // MARK: - Setup/Teardown
     
     var sut: LogInterface!
 
@@ -24,8 +24,11 @@ class LoggerTest: XCTestCase {
         super.tearDown()
         sut = nil
     }
+}
     
-    // MARK: - Tests
+// MARK: - Tests
+
+extension LoggerTest {
 
     func testGetConfigurationShouldReturnValidObject() {
         XCTAssertNotNil(sut.getConfiguration())
