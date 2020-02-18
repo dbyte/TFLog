@@ -8,21 +8,10 @@
 
 import os.log
 
-internal protocol LogProvider {
-    
-    func executeLog()
-    func setup(
-        message: String?,
-        subsystem: String?,
-        category: String?,
-        lev: LogLevel?,
-        isPublic: Bool?)
-}
-
 // MARK: Adapter for OSLog
 
-/// Converting logger data and behaviour to the OSLog
-internal class OSLogProvider: LogProvider {
+/// Adapter: Using OSLog infrastructure
+public class OSLogProvider: LogProvider {
     
     // MARK: - Properties/Init
     
@@ -33,7 +22,7 @@ internal class OSLogProvider: LogProvider {
     private var type = OSLogType.default
     private var publicArg: StaticString = ""
     
-    init() {}
+    public init() {}
 }
 
 // MARK: - Private Methods
@@ -91,19 +80,24 @@ private extension OSLogProvider {
 // MARK: - Internal Methods
 
 internal extension OSLogProvider {
+}
+
+// MARK: - Public Methods
+
+public extension OSLogProvider {
     
     /// Setup OSLog adapter to be prepared for logging.
     func setup(
         message: String? = nil,
         subsystem: String? = nil,
         category: String? = nil,
-        lev: LogLevel? = nil,
+        logLevel: LogLevel? = nil,
         isPublic: Bool? = nil) {
         
         self.message = message ?? ""
         self.subsystem = adapt(subsystem: subsystem ?? "")
         self.category = adapt(category: category ?? "")
-        self.type = adapt(logLevel: lev)
+        self.type = adapt(logLevel: logLevel)
         self.publicArg = adapt(isPublic: isPublic ?? true)
         self.osLog = OSLog(subsystem: self.subsystem, category: self.category)
     }

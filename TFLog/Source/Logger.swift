@@ -10,7 +10,7 @@
 
 /// Logger Implementation
 ///
-/// Wrapper for Swift.print. Provides simple console logging functionality.
+/// Main Logger. Provides logging functionality by using a logging provider such as OSLog or Console.
 public class Logger: LogInterface {
     
     // MARK: - Properties/Init
@@ -59,10 +59,7 @@ public extension Logger {
     }
     
     // Print debug infos to console.
-    func log(
-        _ header: String? = "",
-        data: Any? = nil,
-        lev: LogLevel?) {
+    func log(_ header: String? = "", data: Any? = nil, lev: LogLevel?) {
         
         #if CUSTOMLOG
         // Early return when switched off via configuration.
@@ -81,15 +78,7 @@ public extension Logger {
         logLevelSymbol = getLogLevelSymbol(lev: lev)
         
         // Output
-        let osLog = LogAdapterForOSLog()
-        osLog.setup(
-            message: getFinalOutput(),
-            subsystem: configuration.subsystemID,
-            category: category,
-            lev: lev,
-            isPublic: true)
-        osLog.log()
-
+        execute(logLevel: lev)
         #endif
     }
     
@@ -100,13 +89,7 @@ public extension Logger {
         
         option = Options.newLine
         
-        let osLog = LogAdapterForOSLog()
-        osLog.setup(
-            message: getFinalOutput(),
-            subsystem: configuration.subsystemID,
-            category: category,
-            isPublic: true)
-        osLog.log()
+        execute()
         #endif
     }
     
@@ -117,13 +100,7 @@ public extension Logger {
         
         option = Options.verticalDivider
         
-        let osLog = LogAdapterForOSLog()
-        osLog.setup(
-            message: getFinalOutput(),
-            subsystem: configuration.subsystemID,
-            category: category,
-            isPublic: true)
-        osLog.log()
+        execute()
         #endif
     }
     
@@ -140,6 +117,19 @@ public extension Logger {
 // MARK: - Private helpers
 
 private extension Logger {
+    
+    private func execute(logLevel: LogLevel? = nil) {
+        let provider = configuration.logProvider
+        
+        provider.setup(
+            message: getFinalOutput(),
+            subsystem: configuration.subsystemID,
+            category: category,
+            logLevel: logLevel,
+            isPublic: true)
+        
+        provider.executeLog()
+    }
     
     private func getFinalOutput() -> String {
         var final: String

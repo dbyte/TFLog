@@ -13,6 +13,8 @@
 /// - See also: `LogLevelSymbolBuilder`
 public struct LogLevelSymbols {
     
+    // MARK: Properties/Init
+    
     internal var error: String
     internal var warning: String
     internal var success: String

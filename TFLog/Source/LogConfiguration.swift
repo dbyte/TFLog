@@ -18,12 +18,14 @@ public class LogConfiguration {
     // MARK: - Properties/Init
     
     public private(set) var isLoggingActive: Bool
+    internal private(set) var logProvider: LogProvider
     internal private(set) var isTimestampIncluded: Bool
     internal private(set) var subsystemID: String?
     internal private(set) var logLevelSymbols: LogLevelSymbols
     
     public init() {
         self.isLoggingActive = true // logging is active by default
+        self.logProvider = OSLogProvider() // Apple os.log framework is default
         self.isTimestampIncluded = false
         self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
         self.subsystemID = ""
@@ -45,6 +47,10 @@ public extension LogConfiguration {
     
     func activateLogging(_ isLoggingActive: Bool) {
         self.isLoggingActive = isLoggingActive
+    }
+    
+    func setLogProvider(_ logProvider: LogProvider) {
+        self.logProvider = logProvider
     }
     
     func includeTimestamp(_ isTimestampIncluded: Bool) {
