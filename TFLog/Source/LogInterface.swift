@@ -16,7 +16,7 @@ public protocol LogInterface {
     we consider them as workarounds too.
     */
     
-    /// Required to configure the logger.
+    /// Required to setConfiguration the logger.
     init(configuration: LogConfigurable, category: String)
     
     /// Logging.
@@ -67,7 +67,7 @@ public protocol LogInterface {
     func verticalDivider()
     
     /// Injects a logger configuration into a existing logger object.
-    func configure(with configuration: LogConfigurable)
+    func setConfiguration(with configuration: LogConfigurable)
     
     /// Gets current logger configuration object.
     func getConfiguration() -> LogConfigurable

@@ -10,16 +10,21 @@ import os.log
 
 // MARK: Interface for LogConfiguration
 
-///
+/// Interface for configuration of the Logger.
 public protocol LogConfigurable {
     
-    ///
+    /// Switch logging on/off
     func activateLogging(_ isLoggingActive: Bool)
     
+    /// Choose a log provider (infrastructure) which conforms to LogInterface.
+    /// In your host app, you may do so by calling a method of LogProviderFactory.
+    /// Current default is `OSLogProvider`.
     ///
+    /// - See also: `LogProviderFactory`
     func setLogProvider(_ logProvider: LogProvider)
     
-    ///
+    /// Show/hide timestamps at start of each log message. It is switched off per default.
+    /// May be useful if ConsoleLogProvider is your current log provider.
     func includeTimestamp(_ isTimestampIncluded: Bool)
     
     ///
@@ -37,7 +42,7 @@ public protocol LogConfigurable {
     ///
     func getLogLevelSymbols() -> LogLevelSymbolsInterface
     
-    /// Unicode log level symbols can be built and/or replaced here.
+    /// Replaces unicode log level symbols in your logger configuration.
     func replaceLogLevelSymbols() -> LogLevelSymbolBuildable
     
     ///
@@ -48,7 +53,7 @@ public protocol LogConfigurable {
 
 /// Holds configuration data for the logger and provides handling of a configuration.
 ///
-/// - See also: `Logging.configure`
+/// - See also: `Logging.setConfiguration`
 internal class LogConfiguration: LogConfigurable {
     
     // MARK: - Properties/Init
@@ -100,9 +105,6 @@ internal extension LogConfiguration {
     func replaceSymbols(with symbols: LogLevelSymbolsInterface) {
         self.logLevelSymbols = symbols
     }
-    
-    // Below are some funcs which need to conform to LogConfigurable. This is because we do not
-    // want to expose the fields of this class to the protocol.
     
     func getIsLoggingActive() -> Bool {
         return isLoggingActive
