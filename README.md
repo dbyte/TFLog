@@ -4,7 +4,7 @@
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)]
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 One to two paragraph statement about your product and what it does.
@@ -77,5 +77,5 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
-[travis-image]: https://travis-ci.com/dbyte/TFLog.svg?token=dUmdT6aTpafxbyDyyfQA&branch=master
-[travis-url]: https://travis-ci.org/dbyte/TFLog
+[travis-image]: https://travis-ci.com/dbyte/TFLog.svg?branch=master
+[travis-url]: https://travis-ci.com/dbyte/TFLog
