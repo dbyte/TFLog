@@ -184,14 +184,13 @@ extension LoggerTest {
         let regexMatches = regex.matches(in: providerMock.message, options: [], range: range)
         XCTAssertTrue(regexMatches.count > 0, "ISO Date should be present but could not be extracted")
         
-        guard let timestampString = (regexMatches.map {
+        let timestampString = (regexMatches.map {
             String(providerMock.message[Range($0.range, in: providerMock.message)!])
-        }).first else {
-            XCTFail( "ISO Date should be present but could not be extracted")
-            return
-        }
+        }).first
+        
+        XCTAssertNotNil(timestampString, "ISO Date should be present but could not be extracted")
         
         // Check if timestamp an message were successfully composed
-        XCTAssertEqual(providerMock.message, "\(timestampString) Log_WithTimestamp")
+        XCTAssertEqual(providerMock.message, "\(timestampString ?? "") Log_WithTimestamp")
     }
 }
