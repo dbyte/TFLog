@@ -10,7 +10,6 @@
 ## Build generated
 build/
 DerivedData/
-*TFLog.framework
 
 ## Various settings
 *.pbxuser
@@ -26,6 +25,7 @@ xcuserdata/
 ## Other
 *.moved-aside
 *.xccheckout
+*.xcuserstate
 *.xcscmblueprint
 
 ## Obj-C/Swift specific
@@ -88,11 +88,11 @@ iOSInjectionProject/
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
 ### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-**/xcshareddata/WorkspaceSettings.xcsettings
+# *.xcodeproj/*
+# !*.xcodeproj/project.pbxproj
+# !*.xcodeproj/xcshareddata/
+# !*.xcworkspace/contents.xcworkspacedata
+# /*.gcno
+# **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/swift,xcode
