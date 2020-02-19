@@ -6,18 +6,17 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 import XCTest
-import Foundation
 @testable import TFLog
 
-class DateExtensionTest: XCTestCase {
+class StringExtensionTest: XCTestCase {
     
     // MARK: - Setup/Teardown
     
-    var sut: Date!
+    var sut: String!
     
     override func setUp() {
         super.setUp()
-        sut = Date()
+        sut = String()
     }
     
     override func tearDown() {
@@ -28,20 +27,5 @@ class DateExtensionTest: XCTestCase {
 
 // MARK: - Tests
 
-extension DateExtensionTest {
-    
-    func testConvertToTimezoneISO8601() {
-        let expectedResult = "2025-02-19T18:54:32+01:00"
-        let sut = Date()
-        let formatOptions: ISO8601DateFormatter.Options =
-            [.withYear,
-             .withMonth,
-             .withDay,
-             .withFullTime,
-             .withDashSeparatorInDate,
-             .withColonSeparatorInTime]
-        let stringResult = sut.convertToTimezoneISO8601(timeZone: TimeZone.current, formatOptions: formatOptions)
-        
-        XCTAssertEqual(stringResult, expectedResult)
-    }
+extension StringExtensionTest {
 }
