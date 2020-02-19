@@ -6,6 +6,8 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
+import Foundation
+
 // MARK: - Logger Implementation
 
 /// Logger Implementation
