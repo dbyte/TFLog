@@ -48,6 +48,7 @@ extension LoggerTest {
     
     func testShouldNotLogIfLoggingIsDeactivated() {
         sut = LoggerStub().deactivatedAndProviderMock()
+        // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         func getNewExpectation() -> XCTestExpectation {
@@ -76,6 +77,7 @@ extension LoggerTest {
     
     func testLogShouldComposeValidMessage() {
         sut = LoggerStub().activatedAndProviderMock()
+        // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         func getNewExpectation() -> XCTestExpectation {
@@ -132,6 +134,7 @@ extension LoggerTest {
     
     func testNewLine() {
         sut = LoggerStub().activatedAndProviderMock()
+        // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
@@ -146,6 +149,7 @@ extension LoggerTest {
     
     func testVerticalDivider() {
         sut = LoggerStub().activatedAndProviderMock()
+        // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
@@ -162,6 +166,7 @@ extension LoggerTest {
         sut = LoggerStub().activatedAndProviderMock()
         sut.getConfiguration().includeTimestamp(true) // activate timestamp
         
+        // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
         // Regex pattern for the ISO8601 formatted timestamp.

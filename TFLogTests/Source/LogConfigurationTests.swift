@@ -48,6 +48,7 @@ extension LogConfigurationTests {
             return // return early, else code below would stall testing
         }
         
+        // swiftlint:disable:next force_cast
         XCTAssertEqual(defaultSymbols, config.logLevelSymbols as! LogLevelSymbols)
     }
     
