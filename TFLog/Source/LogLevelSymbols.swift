@@ -34,7 +34,7 @@ public protocol LogLevelSymbolsInterface {
 
 // MARK: - Log level unicode symbols
 
-internal struct LogLevelSymbols: LogLevelSymbolsInterface {
+internal struct LogLevelSymbols: LogLevelSymbolsInterface, Equatable {
     
     // MARK: Properties/Init
     

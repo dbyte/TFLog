@@ -28,7 +28,7 @@ public protocol LogConfigurable {
     func includeTimestamp(_ isTimestampIncluded: Bool)
     
     ///
-    func getSubsystemID() -> String?
+    func getSubsystemID() -> String
     
     ///
     func setSubsystemID(_ subsystemID: String)
@@ -44,6 +44,9 @@ public protocol LogConfigurable {
     
     /// Replaces unicode log level symbols in your logger configuration.
     func replaceLogLevelSymbols() -> LogLevelSymbolBuildable
+    
+    /// Replace current set of unicode log level symbols with another.
+    func replaceSymbols(with symbols: LogLevelSymbolsInterface)
     
     ///
     func getIsTimestampIncluded() -> Bool
@@ -61,7 +64,7 @@ internal class LogConfiguration: LogConfigurable {
     internal private(set) var isLoggingActive: Bool
     internal private(set) var logProvider: LogProvider
     internal private(set) var isTimestampIncluded: Bool
-    internal private(set) var subsystemID: String?
+    internal private(set) var subsystemID: String
     internal private(set) var logLevelSymbols: LogLevelSymbolsInterface
     
     internal init() {
@@ -89,8 +92,8 @@ internal extension LogConfiguration {
         self.isTimestampIncluded = isTimestampIncluded
     }
     
-    func getSubsystemID() -> String? {
-        return subsystemID ?? ""
+    func getSubsystemID() -> String {
+        return subsystemID
     }
     
     func setSubsystemID(_ subsystemID: String) {

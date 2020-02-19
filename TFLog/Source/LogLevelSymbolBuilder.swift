@@ -59,7 +59,7 @@ public protocol LogLevelSymbolBuildable {
 internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {
     
     private var logLevelSymbols: LogLevelSymbolsInterface
-    private weak var config: LogConfiguration?
+    private var config: LogConfigurable?
     
     init(forConfiguration config: LogConfiguration) {
         self.config = config
