@@ -1,6 +1,6 @@
 
 language: swift
 osx_image: xcode11.3
-xcode_project: TFLog.xcodeproj # path to your xcodeproj folder
+xcode_project: TFLog.xcodeproj
 xcode_scheme: TFLog
 xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone 8
