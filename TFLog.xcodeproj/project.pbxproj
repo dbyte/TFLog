@@ -1,0 +1,699 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C5003B6523FB5595002FD627 /* LogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6423FB5595002FD627 /* LogProvider.swift */; };
+		C5003B6723FB5B71002FD627 /* ConsoleLogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */; };
+		C50A589D23FCBDAE002B1B10 /* LogLevelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */; };
+		C50A589F23FCC417002B1B10 /* LogLevelSymbolsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */; };
+		C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51563B023FC869300E0BEC3 /* LoggerStub.swift */; };
+		C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C26523FC38AA00BBE644 /* LogProviderMock.swift */; };
+		C574538223F863CD0031FFEE /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574538123F863CD0031FFEE /* LogLevel.swift */; };
+		C595F85423CEB11F003C2BC9 /* TFLog.h in Headers */ = {isa = PBXBuildFile; fileRef = C595F84623CEB11F003C2BC9 /* TFLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C595F85F23CEB1B5003C2BC9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F85E23CEB1B5003C2BC9 /* Logger.swift */; };
+		C595F86223CEB243003C2BC9 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F86123CEB243003C2BC9 /* FoundationExtensions.swift */; };
+		C595F86423CEB302003C2BC9 /* LogInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F86323CEB302003C2BC9 /* LogInterface.swift */; };
+		C595F88723CEC133003C2BC9 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F88623CEC133003C2BC9 /* Option.swift */; };
+		C5A44A2823FB87D700D49E8E /* LogLevelSymbolBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A44A2723FB87D700D49E8E /* LogLevelSymbolBuilder.swift */; };
+		C5A44A2A23FB9D5500D49E8E /* LoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A44A2923FB9D5500D49E8E /* LoggerFactory.swift */; };
+		C5BF15F323FA1E89007AD16A /* OSLogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF15F223FA1E89007AD16A /* OSLogProvider.swift */; };
+		C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC723FC1D26007EF477 /* LoggerTest.swift */; };
+		C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */; };
+		C5CB91FF23FD908200AD5C41 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = C5CB91FE23FD908200AD5C41 /* .travis.yml */; };
+		C5E5F15723FC9403003C59DA /* LoggerFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */; };
+		C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */; };
+		C5EB7A0A23F8D74300A95A1C /* LogConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */; };
+		C5EB7A0E23F8F99700A95A1C /* LogLevelSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB7A0D23F8F99700A95A1C /* LogLevelSymbols.swift */; };
+		C5EC567F23F4B4FB0016514B /* TFLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC567E23F4B4FB0016514B /* TFLogTests.swift */; };
+		C5EC568123F4B4FB0016514B /* TFLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C595F84323CEB11F003C2BC9 /* TFLog.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5EC568223F4B4FB0016514B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C595F83A23CEB11F003C2BC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C595F84223CEB11F003C2BC9;
+			remoteInfo = TFLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C5003B6423FB5595002FD627 /* LogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProvider.swift; sourceTree = "<group>"; };
+		C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogProvider.swift; sourceTree = "<group>"; };
+		C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTest.swift; sourceTree = "<group>"; };
+		C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolsTest.swift; sourceTree = "<group>"; };
+		C51563B023FC869300E0BEC3 /* LoggerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerStub.swift; sourceTree = "<group>"; };
+		C557C26523FC38AA00BBE644 /* LogProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProviderMock.swift; sourceTree = "<group>"; };
+		C574538123F863CD0031FFEE /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		C595F84323CEB11F003C2BC9 /* TFLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TFLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C595F84623CEB11F003C2BC9 /* TFLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFLog.h; sourceTree = "<group>"; };
+		C595F84723CEB11F003C2BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C595F85E23CEB1B5003C2BC9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C595F86123CEB243003C2BC9 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
+		C595F86323CEB302003C2BC9 /* LogInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInterface.swift; sourceTree = "<group>"; };
+		C595F88623CEC133003C2BC9 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		C5A44A2723FB87D700D49E8E /* LogLevelSymbolBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolBuilder.swift; sourceTree = "<group>"; };
+		C5A44A2923FB9D5500D49E8E /* LoggerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactory.swift; sourceTree = "<group>"; };
+		C5BF15F223FA1E89007AD16A /* OSLogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogProvider.swift; sourceTree = "<group>"; };
+		C5C42EC723FC1D26007EF477 /* LoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTest.swift; sourceTree = "<group>"; };
+		C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationStub.swift; sourceTree = "<group>"; };
+		C5CB91FE23FD908200AD5C41 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
+		C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactoryTest.swift; sourceTree = "<group>"; };
+		C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationTests.swift; sourceTree = "<group>"; };
+		C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfiguration.swift; sourceTree = "<group>"; };
+		C5EB7A0D23F8F99700A95A1C /* LogLevelSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbols.swift; sourceTree = "<group>"; };
+		C5EC567C23F4B4FB0016514B /* TFLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5EC567E23F4B4FB0016514B /* TFLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFLogTests.swift; sourceTree = "<group>"; };
+		C5EC568023F4B4FB0016514B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C595F84023CEB11F003C2BC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5EC567923F4B4FB0016514B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5EC568123F4B4FB0016514B /* TFLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C51563B223FC86BE00E0BEC3 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				C51563B023FC869300E0BEC3 /* LoggerStub.swift */,
+				C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		C595F83923CEB11F003C2BC9 = {
+			isa = PBXGroup;
+			children = (
+				C5CB91FE23FD908200AD5C41 /* .travis.yml */,
+				C595F84523CEB11F003C2BC9 /* TFLog */,
+				C5EC567D23F4B4FB0016514B /* TFLogTests */,
+				C595F84423CEB11F003C2BC9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C595F84423CEB11F003C2BC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C595F84323CEB11F003C2BC9 /* TFLog.framework */,
+				C5EC567C23F4B4FB0016514B /* TFLogTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C595F84523CEB11F003C2BC9 /* TFLog */ = {
+			isa = PBXGroup;
+			children = (
+				C595F84623CEB11F003C2BC9 /* TFLog.h */,
+				C595F84723CEB11F003C2BC9 /* Info.plist */,
+				C595F85D23CEB164003C2BC9 /* Source */,
+			);
+			path = TFLog;
+			sourceTree = "<group>";
+		};
+		C595F85D23CEB164003C2BC9 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C595F86323CEB302003C2BC9 /* LogInterface.swift */,
+				C595F85E23CEB1B5003C2BC9 /* Logger.swift */,
+				C5A44A2923FB9D5500D49E8E /* LoggerFactory.swift */,
+				C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */,
+				C574538123F863CD0031FFEE /* LogLevel.swift */,
+				C5EB7A0D23F8F99700A95A1C /* LogLevelSymbols.swift */,
+				C5A44A2723FB87D700D49E8E /* LogLevelSymbolBuilder.swift */,
+				C5003B6423FB5595002FD627 /* LogProvider.swift */,
+				C5BF15F223FA1E89007AD16A /* OSLogProvider.swift */,
+				C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */,
+				C595F88623CEC133003C2BC9 /* Option.swift */,
+				C595F86123CEB243003C2BC9 /* FoundationExtensions.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C5C42EC623FC1CD1007EF477 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C5C42EC723FC1D26007EF477 /* LoggerTest.swift */,
+				C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */,
+				C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */,
+				C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */,
+				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C5E5F15523FC907C003C59DA /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				C557C26523FC38AA00BBE644 /* LogProviderMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		C5EC567D23F4B4FB0016514B /* TFLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5C42EC623FC1CD1007EF477 /* Source */,
+				C5E5F15523FC907C003C59DA /* Mocks */,
+				C51563B223FC86BE00E0BEC3 /* Stubs */,
+				C5EC567E23F4B4FB0016514B /* TFLogTests.swift */,
+				C5EC568023F4B4FB0016514B /* Info.plist */,
+			);
+			path = TFLogTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C595F83E23CEB11F003C2BC9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C595F85423CEB11F003C2BC9 /* TFLog.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C595F84223CEB11F003C2BC9 /* TFLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C595F85723CEB11F003C2BC9 /* Build configuration list for PBXNativeTarget "TFLog" */;
+			buildPhases = (
+				C595F83E23CEB11F003C2BC9 /* Headers */,
+				C595F83F23CEB11F003C2BC9 /* Sources */,
+				C595F84023CEB11F003C2BC9 /* Frameworks */,
+				C595F84123CEB11F003C2BC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TFLog;
+			productName = TFLog;
+			productReference = C595F84323CEB11F003C2BC9 /* TFLog.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C5EC567B23F4B4FB0016514B /* TFLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5EC568723F4B4FB0016514B /* Build configuration list for PBXNativeTarget "TFLogTests" */;
+			buildPhases = (
+				C5EC567823F4B4FB0016514B /* Sources */,
+				C5EC567923F4B4FB0016514B /* Frameworks */,
+				C5EC567A23F4B4FB0016514B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5EC568323F4B4FB0016514B /* PBXTargetDependency */,
+			);
+			name = TFLogTests;
+			productName = TFLogTests;
+			productReference = C5EC567C23F4B4FB0016514B /* TFLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C595F83A23CEB11F003C2BC9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = dbyte;
+				TargetAttributes = {
+					C595F84223CEB11F003C2BC9 = {
+						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
+					};
+					C5EC567B23F4B4FB0016514B = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = C595F83D23CEB11F003C2BC9 /* Build configuration list for PBXProject "TFLog" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C595F83923CEB11F003C2BC9;
+			productRefGroup = C595F84423CEB11F003C2BC9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C595F84223CEB11F003C2BC9 /* TFLog */,
+				C5EC567B23F4B4FB0016514B /* TFLogTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C595F84123CEB11F003C2BC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5CB91FF23FD908200AD5C41 /* .travis.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5EC567A23F4B4FB0016514B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C595F83F23CEB11F003C2BC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C595F85F23CEB1B5003C2BC9 /* Logger.swift in Sources */,
+				C5BF15F323FA1E89007AD16A /* OSLogProvider.swift in Sources */,
+				C5EB7A0A23F8D74300A95A1C /* LogConfiguration.swift in Sources */,
+				C5EB7A0E23F8F99700A95A1C /* LogLevelSymbols.swift in Sources */,
+				C595F88723CEC133003C2BC9 /* Option.swift in Sources */,
+				C5003B6723FB5B71002FD627 /* ConsoleLogProvider.swift in Sources */,
+				C5A44A2A23FB9D5500D49E8E /* LoggerFactory.swift in Sources */,
+				C5003B6523FB5595002FD627 /* LogProvider.swift in Sources */,
+				C595F86423CEB302003C2BC9 /* LogInterface.swift in Sources */,
+				C5A44A2823FB87D700D49E8E /* LogLevelSymbolBuilder.swift in Sources */,
+				C574538223F863CD0031FFEE /* LogLevel.swift in Sources */,
+				C595F86223CEB243003C2BC9 /* FoundationExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5EC567823F4B4FB0016514B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */,
+				C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */,
+				C5EC567F23F4B4FB0016514B /* TFLogTests.swift in Sources */,
+				C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */,
+				C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */,
+				C5E5F15723FC9403003C59DA /* LoggerFactoryTest.swift in Sources */,
+				C50A589F23FCC417002B1B10 /* LogLevelSymbolsTest.swift in Sources */,
+				C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */,
+				C50A589D23FCBDAE002B1B10 /* LogLevelTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5EC568323F4B4FB0016514B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C595F84223CEB11F003C2BC9 /* TFLog */;
+			targetProxy = C5EC568223F4B4FB0016514B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C537541423D7513B009A1B55 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Testing;
+		};
+		C537541523D7513B009A1B55 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TFLog/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLog";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG CUSTOMLOG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Testing;
+		};
+		C595F85523CEB11F003C2BC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C595F85623CEB11F003C2BC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C595F85823CEB11F003C2BC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TFLog/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLog";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG CUSTOMLOG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C595F85923CEB11F003C2BC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TFLog/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLog";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C5EC568423F4B4FB0016514B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				INFOPLIST_FILE = TFLogTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLogTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C5EC568523F4B4FB0016514B /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				INFOPLIST_FILE = TFLogTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLogTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Testing;
+		};
+		C5EC568623F4B4FB0016514B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C22FX44H4R;
+				INFOPLIST_FILE = TFLogTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.dbyte-solutions.TFLogTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C595F83D23CEB11F003C2BC9 /* Build configuration list for PBXProject "TFLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C595F85523CEB11F003C2BC9 /* Debug */,
+				C537541423D7513B009A1B55 /* Testing */,
+				C595F85623CEB11F003C2BC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C595F85723CEB11F003C2BC9 /* Build configuration list for PBXNativeTarget "TFLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C595F85823CEB11F003C2BC9 /* Debug */,
+				C537541523D7513B009A1B55 /* Testing */,
+				C595F85923CEB11F003C2BC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5EC568723F4B4FB0016514B /* Build configuration list for PBXNativeTarget "TFLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5EC568423F4B4FB0016514B /* Debug */,
+				C5EC568523F4B4FB0016514B /* Testing */,
+				C5EC568623F4B4FB0016514B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C595F83A23CEB11F003C2BC9 /* Project object */;
+}
