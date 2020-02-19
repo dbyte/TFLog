@@ -190,7 +190,7 @@ private extension Logger {
     }
     
     private func getLogLevelSymbol(lev: LogLevel?) -> String {
-        return lev?.symbol(from: configuration.getLogLevelSymbols()) ?? ""
+        return lev?.getSymbol(from: configuration.getLogLevelSymbols()) ?? ""
     }
     
     private func getTimestampString() -> String {
