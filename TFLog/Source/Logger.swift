@@ -195,14 +195,17 @@ private extension Logger {
     
     private func getTimestampString() -> String {
         guard configuration.getIsTimestampIncluded() else { return "" }
+        
         let formatOptions: ISO8601DateFormatter.Options =
             [.withYear,
              .withMonth,
              .withDay,
              .withFullTime,
              .withDashSeparatorInDate,
-             .withColonSeparatorInTime]
-        let result = Date().convertToTimezoneISO8601(timeZone: TimeZone.current, formatOptions: formatOptions)
+             .withColonSeparatorInTime,
+             .withTimeZone]
+        
+        let result = ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: formatOptions)
         return result
     }
 }
