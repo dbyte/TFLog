@@ -9,7 +9,7 @@
 // MARK: - Interface for LogLevelSymbols
 
 /// Represents all provided log level unicode symbols of this framework.
-/// Log level unicode symbols customization can be done via `LogConfiguration.replaceLogLevelSymbols()` .
+/// Log level unicode symbols customization can be done via `LogConfigurable.replaceLogLevelSymbols()` .
 /// - See also: `LogLevelSymbolBuilder`
 public protocol LogLevelSymbolsInterface {
     

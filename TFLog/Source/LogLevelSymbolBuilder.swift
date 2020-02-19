@@ -11,7 +11,7 @@
 /// Log level unicode symbols customization.
 ///
 /// Use this builder to create a new set of symbols or just set the ones you want to overwrite.
-/// - See also: `LogConfiguration`, `LogLevelSymbolsInterface`
+/// - See also: `LogConfigurable`, `LogLevelSymbolsInterface`
 public protocol LogLevelSymbolBuildable {
     
     /// Set _error_ prefix
@@ -61,7 +61,7 @@ internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {
     private var logLevelSymbols: LogLevelSymbolsInterface
     private var config: LogConfigurable?
     
-    init(forConfiguration config: LogConfiguration) {
+    init(forConfiguration config: LogConfigurable) {
         self.config = config
         logLevelSymbols = config.getLogLevelSymbols()
     }
