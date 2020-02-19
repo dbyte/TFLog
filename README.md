@@ -27,20 +27,11 @@ One to two paragraph statement about your product and what it does.
 
 ## Installation
 
-To get the full benefits, import `TFLog` wherever you want to log something
+To get the full benefits, import `TFLog` wherever you want to log something and make your classes/structs conform
+to protocol 'Logging'.
 
 ``` swift
 import TFLog
-
-// Simple usage
-struct Drummer: Logging {
-
-    logger.log("Take care", data: anyData, lev: .warning)
-    logger.log("of your snare.")
-    logger.log("Too late.", lev: .error)
-    logger.verticalDivider()
-    logger.log(data: anyData)
-}
 ```
 
 #### CocoaPods
@@ -57,7 +48,17 @@ Download and drop ```TFLog/Source``` in your project.
 ## Usage example
 
 ```swift
+import TFLog
 
+// Simple usage
+struct Drummer: Logging {
+
+logger.log("Take care", data: anyData, lev: .warning)
+logger.log("of your snare.")
+logger.log("Too late.", lev: .error)
+logger.verticalDivider()
+logger.log(data: anyData)
+}
 ```
 
 ## Contribute
