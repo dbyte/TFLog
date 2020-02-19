@@ -27,19 +27,19 @@ public protocol LogConfigurable {
     /// May be useful if ConsoleLogProvider is your current log provider.
     func includeTimestamp(_ isTimestampIncluded: Bool)
     
-    ///
+    /// Get subsystem identifier.
     func getSubsystemID() -> String
     
-    ///
+    /// Set subsystem identifier. Should be named in reverse domain notation.
     func setSubsystemID(_ subsystemID: String)
     
-    ///
+    /// Returns true if logging is activated for the logger which has this configuration.
     func getIsLoggingActive() -> Bool
     
-    ///
+    /// Get current log provider object.
     func getLogProvider() -> LogProvider
     
-    ///
+    /// Get all current log level symbols.
     func getLogLevelSymbols() -> LogLevelSymbolsInterface
     
     /// Replaces unicode log level symbols in your logger configuration.
@@ -48,7 +48,7 @@ public protocol LogConfigurable {
     /// Replace current set of unicode log level symbols with another.
     func replaceSymbols(with symbols: LogLevelSymbolsInterface)
     
-    ///
+    /// Returns true if timestamps are embedded at the beginning of each log message.
     func getIsTimestampIncluded() -> Bool
 }
 
@@ -100,7 +100,6 @@ internal extension LogConfiguration {
         self.subsystemID = subsystemID
     }
     
-    /// Unicode log level symbols can be built and/or replaced here.
     func replaceLogLevelSymbols() -> LogLevelSymbolBuildable {
         return LogLevelSymbolBuilder(forConfiguration: self)
     }
