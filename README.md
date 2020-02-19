@@ -23,29 +23,34 @@ One to two paragraph statement about your product and what it does.
 
 - iOS 12.0+
 - Xcode 11.3+
+- Swift 5+
 
 ## Installation
-
-#### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `TFLog` by adding it to your `Podfile`:
-
-```ruby
-platform :ios, '12.0'
-use_frameworks!
-pod 'TFLog'
-```
 
 To get the full benefits, import `TFLog` wherever you want to log something
 
 ``` swift
 import TFLog
-```
-#### Carthage
-Create a `Cartfile` that lists the framework and run `carthage update`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/TFLog.framework` to an iOS project.
 
+// Simple usage
+struct Drummer: Logging {
+
+    logger.log("Take care", data: anyData, lev: .warning)
+    logger.log("of your snare.")
+    logger.log("Too late.", lev: .error)
+    logger.verticalDivider()
+    logger.log(data: anyData)
+}
 ```
-github "yourUsername/yourlibrary"
-```
+
+#### CocoaPods
+Not yet supported.
+
+
+#### Carthage
+Not yet supported.
+
+
 #### Manually
 Download and drop ```TFLog/Source``` in your project.  
 
