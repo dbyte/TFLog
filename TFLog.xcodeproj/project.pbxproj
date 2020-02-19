@@ -25,6 +25,7 @@
 		C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC723FC1D26007EF477 /* LoggerTest.swift */; };
 		C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */; };
 		C5CB91FF23FD908200AD5C41 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = C5CB91FE23FD908200AD5C41 /* .travis.yml */; };
+		C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */; };
 		C5E5F15723FC9403003C59DA /* LoggerFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */; };
 		C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */; };
 		C5EB7A0A23F8D74300A95A1C /* LogConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */; };
@@ -64,6 +65,7 @@
 		C5C42EC723FC1D26007EF477 /* LoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTest.swift; sourceTree = "<group>"; };
 		C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationStub.swift; sourceTree = "<group>"; };
 		C5CB91FE23FD908200AD5C41 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
+		C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensionsTest.swift; sourceTree = "<group>"; };
 		C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactoryTest.swift; sourceTree = "<group>"; };
 		C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationTests.swift; sourceTree = "<group>"; };
 		C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfiguration.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */,
 				C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */,
 				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */,
+				C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			files = (
 				C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */,
 				C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */,
+				C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTest.swift in Sources */,
 				C5EC567F23F4B4FB0016514B /* TFLogTests.swift in Sources */,
 				C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */,
 				C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */,
