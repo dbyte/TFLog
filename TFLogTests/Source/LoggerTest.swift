@@ -172,17 +172,19 @@ extension LoggerTest {
         // Regex pattern for the ISO8601 formatted timestamp.
         // swiftlint:disable:next force_try
         let regex = try! NSRegularExpression(
-            pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})[+-](\\d{2})\\:(\\d{2})")
+            pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})([zZ]|[+-](\\d{2})\\:(\\d{2}))")
         
         // Execute
         providerMock.setExpectation(expectation(description: "LogExecutionMethodWasCalled"))
         sut.log("Log_WithTimestamp")
         waitForExpectations(timeout: 1, handler: nil)
         
+        
+        
         // Search for timestamp in  log message
         let range = NSRange(location: 0, length: providerMock.message.count)
         let regexMatches = regex.matches(in: providerMock.message, options: [], range: range)
-        XCTAssertTrue(regexMatches.count > 0, "ISO Date should be present but could not be extracted")
+        XCTAssertTrue(regexMatches.count > 0, "ISO Date should be present but could not be extracted to regex array.")
         
         let timestampString = (regexMatches.map {
             String(providerMock.message[Range($0.range, in: providerMock.message)!])
