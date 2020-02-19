@@ -13,6 +13,7 @@
 		C50A589F23FCC417002B1B10 /* LogLevelSymbolsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */; };
 		C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51563B023FC869300E0BEC3 /* LoggerStub.swift */; };
 		C557B87D23FDE1F000A7F066 /* TFLogTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */; };
+		C557B87F23FDE9CB00A7F066 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C557B87E23FDE9CB00A7F066 /* README.md */; };
 		C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C26523FC38AA00BBE644 /* LogProviderMock.swift */; };
 		C574538223F863CD0031FFEE /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574538123F863CD0031FFEE /* LogLevel.swift */; };
 		C595F85423CEB11F003C2BC9 /* TFLog.h in Headers */ = {isa = PBXBuildFile; fileRef = C595F84623CEB11F003C2BC9 /* TFLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +52,7 @@
 		C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolsTest.swift; sourceTree = "<group>"; };
 		C51563B023FC869300E0BEC3 /* LoggerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerStub.swift; sourceTree = "<group>"; };
 		C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFLogTestBase.swift; sourceTree = "<group>"; };
+		C557B87E23FDE9CB00A7F066 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C557C26523FC38AA00BBE644 /* LogProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProviderMock.swift; sourceTree = "<group>"; };
 		C574538123F863CD0031FFEE /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		C595F84323CEB11F003C2BC9 /* TFLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TFLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 		C595F83923CEB11F003C2BC9 = {
 			isa = PBXGroup;
 			children = (
+				C557B87E23FDE9CB00A7F066 /* README.md */,
 				C5CB91FE23FD908200AD5C41 /* .travis.yml */,
 				C595F84523CEB11F003C2BC9 /* TFLog */,
 				C5EC567D23F4B4FB0016514B /* TFLogTests */,
@@ -175,11 +178,11 @@
 		C5EC567D23F4B4FB0016514B /* TFLogTests */ = {
 			isa = PBXGroup;
 			children = (
+				C5EC568023F4B4FB0016514B /* Info.plist */,
 				C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */,
 				C5C42EC623FC1CD1007EF477 /* Source */,
 				C5E5F15523FC907C003C59DA /* Mocks */,
 				C51563B223FC86BE00E0BEC3 /* Stubs */,
-				C5EC568023F4B4FB0016514B /* Info.plist */,
 			);
 			path = TFLogTests;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C557B87F23FDE9CB00A7F066 /* README.md in Resources */,
 				C5CB91FF23FD908200AD5C41 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
