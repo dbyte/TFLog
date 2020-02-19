@@ -4,7 +4,7 @@
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)]
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 One to two paragraph statement about your product and what it does.
@@ -56,7 +56,9 @@ struct Drummer: Logging {
 logger.log("Take care", data: anyData, lev: .warning)
 logger.log("of your snare.")
 logger.log("Too late.", lev: .error)
+
 logger.verticalDivider()
+
 logger.log(data: anyData)
 }
 ```
