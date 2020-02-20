@@ -8,7 +8,7 @@
 
 A protocol based Swift logging utility, currently supporting OSLog and Console.
 
-<!--![](header.png) -->
+<!-- ![](header.png) -->
 
 ## Features
 
@@ -62,9 +62,10 @@ logger.log(data: anyData)
 }
 ```
 
-## Contribute
 
-We would love you for the contribution to **TFLog**, check the ``LICENSE`` file for more info.
+<!-- ## Contribute -->
+
+<!-- We would love you for the contribution to **TFLog**, check the ``LICENSE`` file for more info. -->
 
 ## Meta
 
