@@ -8,7 +8,7 @@
 
 A protocol based Swift logging utility, currently supporting OSLog and Console.
 
-![](header.png)
+<!--![](header.png) -->
 
 ## Features
 
