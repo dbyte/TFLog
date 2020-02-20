@@ -209,6 +209,7 @@
 				C595F83F23CEB11F003C2BC9 /* Sources */,
 				C595F84023CEB11F003C2BC9 /* Frameworks */,
 				C595F84123CEB11F003C2BC9 /* Resources */,
+				C5929CB223FEFA0A0019FD11 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -293,6 +294,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C5929CB223FEFA0A0019FD11 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Tammo -- added at 20.02.2020:\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C595F83F23CEB11F003C2BC9 /* Sources */ = {
