@@ -68,28 +68,21 @@ extension LoggerTest {
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
-        func getNewExpectation() -> XCTestExpectation {
-            let expectation = self.expectation(description: "LogExecutionMethodWasCalled")
-            expectation.isInverted = true // invert!
-            return expectation
-        }
+        var expectationBag = [XCTestExpectation]()
         
-        var aExpectation: XCTestExpectation
-        
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        expectationBag.append(getNewLogExecutionExpectation(inverted: true))
+        providerMock.setExpectation(expectationBag.last!)
         sut.log("This should not be logged - logger is deactivated")
-        waitForExpectations(timeout: 1, handler: nil)
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        expectationBag.append(getNewLogExecutionExpectation(inverted: true))
+        providerMock.setExpectation(expectationBag.last!)
         sut.newLine()
-        waitForExpectations(timeout: 1, handler: nil)
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        expectationBag.append(getNewLogExecutionExpectation(inverted: true))
+        providerMock.setExpectation(expectationBag.last!)
         sut.verticalDivider()
-        waitForExpectations(timeout: 1, handler: nil)
+        
+        wait(for: expectationBag, timeout: 1)
     }
     
     func testLogShouldComposeValidMessage() {
@@ -97,53 +90,40 @@ extension LoggerTest {
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
-        func getNewExpectation() -> XCTestExpectation {
-            return self.expectation(description: "LogExecutionMethodWasCalled")
-        }
-        
-        var aExpectation: XCTestExpectation
-        
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("Log_HeaderOnly")
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "Log_HeaderOnly")
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("Log_Header+Level", lev: .action)
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "📘 Log_Header+Level")
         XCTAssertEqual(providerMock.logLevel, .action)
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("Log_Header+Data", data: "SomeDataAsText")
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "Log_Header+Data" + "\n" + "▶️SomeDataAsText◀️")
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("Log_Header+Data+Level", data: "SomeDataAsText", lev: .success)
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "📗 Log_Header+Data+Level" + "\n" + "▶️SomeDataAsText◀️")
         XCTAssertEqual(providerMock.logLevel, .success)
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log(data: "Log_TheDataOnly")
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "▶️Log_TheDataOnly◀️")
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log(data: "Log_Data+Level", lev: .other)
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "📔" + "\n" + "▶️Log_Data+Level◀️")
         XCTAssertEqual(providerMock.logLevel, .other)
         
-        aExpectation = getNewExpectation()
-        providerMock.setExpectation(aExpectation)
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("")
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertEqual(providerMock.message, "")
@@ -154,7 +134,7 @@ extension LoggerTest {
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
-        let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
+        let aExpectation = setLogExecutionExpectation()
         aExpectation.expectedFulfillmentCount = 2
         
         providerMock.setExpectation(aExpectation)
@@ -169,7 +149,7 @@ extension LoggerTest {
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
         
-        let aExpectation = self.expectation(description: "LogExecutionMethodWasCalled")
+        let aExpectation = setLogExecutionExpectation()
         aExpectation.expectedFulfillmentCount = 2
         
         providerMock.setExpectation(aExpectation)
@@ -192,7 +172,7 @@ extension LoggerTest {
             pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})([zZ]|[+-](\\d{2})\\:(\\d{2}))")
         
         // Execute
-        providerMock.setExpectation(expectation(description: "LogExecutionMethodWasCalled"))
+        providerMock.setExpectation(setLogExecutionExpectation())
         sut.log("Log_WithTimestamp")
         waitForExpectations(timeout: timeout, handler: nil)
         
@@ -209,5 +189,20 @@ extension LoggerTest {
         
         // Check if timestamp an message were successfully composed
         XCTAssertEqual(providerMock.message, "\(timestampString ?? "") Log_WithTimestamp")
+    }
+}
+
+private extension LoggerTest {
+    
+    // Returns a new expectation reference with fixed description
+    func getNewLogExecutionExpectation(inverted: Bool = false) -> XCTestExpectation {
+        let expectation = XCTestExpectation(description: "Log execution method should be called")
+        expectation.isInverted = inverted
+        return expectation
+    }
+    
+    // Sets the instance's expectation with a fixed description and returns a reference to it.
+    func setLogExecutionExpectation(inverted: Bool = false) -> XCTestExpectation {
+        return self.expectation(description: "Log execution method should be called")
     }
 }
