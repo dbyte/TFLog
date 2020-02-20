@@ -47,7 +47,7 @@ class LogLevelTests: TFLogTestBase {
 
 extension LogLevelTests {
     
-    func testGetSymbol() {
+    final func testGetSymbol() {
         let config = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         
         let customLogLevelSymbols = LogLevelSymbolBuilder(forConfiguration: config)

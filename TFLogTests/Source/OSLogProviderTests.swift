@@ -54,7 +54,7 @@ class OSLogProviderTests: XCTestCase {
 
 extension OSLogProviderTests {
     
-    func testSetupWithArguments() {
+    final func testSetupWithArguments() {
         sut.setup(
             message: message,
             subsystem: subsystem,
@@ -76,11 +76,11 @@ extension OSLogProviderTests {
             message: message)
     }
     
-    func testSetupWithoutArguments() {
+    final func testSetupWithoutArguments() {
         sut.setup()
     }
     
-    func testSetupWithDifferentLevels() {
+    final func testSetupWithDifferentLevels() {
         sut.setup(logLevel: .action)
         sut.setup(logLevel: .canceled)
         sut.setup(logLevel: .error)
@@ -89,8 +89,7 @@ extension OSLogProviderTests {
         sut.setup(logLevel: .warning)
     }
     
-    func testExecute() {
-        
+    final func testExecute() {
         sut.setup(
             message: "A PUBLIC message text.",
             subsystem: subsystem,

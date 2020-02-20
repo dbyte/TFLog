@@ -47,7 +47,7 @@ class LogConfigurationTests: TFLogTestBase {
 
 extension LogConfigurationTests {
     
-    func testInitializationShouldSetExpectedDefaults() {
+    final func testInitializationShouldSetExpectedDefaults() {
         
         let config = LogConfiguration()
         
@@ -69,14 +69,14 @@ extension LogConfigurationTests {
         XCTAssertEqual(defaultSymbols, config.logLevelSymbols as! LogLevelSymbols)
     }
     
-    func testActivateLogging() {
+    final func testActivateLogging() {
         sut.activateLogging(true)
         XCTAssertEqual(sut.getIsLoggingActive(), true)
         sut.activateLogging(false)
         XCTAssertEqual(sut.getIsLoggingActive(), false)
     }
     
-    func testSetLogProvider() {
+    final func testSetLogProvider() {
         var expectedProvider: LogProvider = LogProviderMock()
         sut.setLogProvider(expectedProvider)
         var returnedProvider: LogProvider = sut.getLogProvider()
@@ -99,21 +99,21 @@ extension LogConfigurationTests {
             "Expected default type \(ConsoleLogProvider.self) but returned \(returnedProvider)")
     }
     
-    func testIncludeTimestamp() {
+    final func testIncludeTimestamp() {
         sut.includeTimestamp(true)
         XCTAssertEqual(sut.getIsTimestampIncluded(), true)
         sut.includeTimestamp(false)
         XCTAssertEqual(sut.getIsTimestampIncluded(), false)
     }
     
-    func testGetSubsystemID() {
+    final func testGetSubsystemID() {
         sut.setSubsystemID("com.dbyte.myApp")
         XCTAssertEqual(sut.getSubsystemID(), "com.dbyte.myApp")
         sut.setSubsystemID("com.someOther.app")
         XCTAssertEqual(sut.getSubsystemID(), "com.someOther.app")
     }
     
-    func testReplaceLogLevelSymbols() {
+    final func testReplaceLogLevelSymbols() {
         let expectedLogLevelSymbols: LogLevelSymbolsInterface =
             sut.replaceLogLevelSymbols()
                 .setAction("a")
@@ -135,7 +135,7 @@ extension LogConfigurationTests {
         XCTAssertEqual(cachedLogLevelSymbols as? LogLevelSymbols, expectedLogLevelSymbols as? LogLevelSymbols)
     }
     
-    func testReplaceSymbols() {
+    final func testReplaceSymbols() {
         let defaultLogLevelSymbols = sut.getLogLevelSymbols()
         let expectedLogLevelSymbols = sut.replaceLogLevelSymbols()
             .setAction("a")

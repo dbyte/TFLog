@@ -55,7 +55,7 @@ class LogLevelSymbolBuilderTests: TFLogTestBase {
 
 extension LogLevelSymbolBuilderTests {
     
-    func testSetError() {
+    final func testSetError() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Error-Prefix"
         
@@ -70,7 +70,7 @@ extension LogLevelSymbolBuilderTests {
         h.setterTest()
     }
     
-    func testSetWarning() {
+    final func testSetWarning() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Warning-Prefix"
         
@@ -85,7 +85,7 @@ extension LogLevelSymbolBuilderTests {
         h.setterTest()
     }
     
-    func testSetSuccess() {
+    final func testSetSuccess() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Success-Prefix"
         
@@ -100,7 +100,7 @@ extension LogLevelSymbolBuilderTests {
         h.setterTest()
     }
     
-    func testSetAction() {
+    final func testSetAction() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Action-Prefix"
         
@@ -115,7 +115,7 @@ extension LogLevelSymbolBuilderTests {
         h.setterTest()
     }
     
-    func testSetCanceled() {
+    final func testSetCanceled() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Canceled-Prefix"
         
@@ -130,7 +130,7 @@ extension LogLevelSymbolBuilderTests {
         h.setterTest()
     }
     
-    func testSetOther() {
+    final func testSetOther() {
         // Given
         h.expectedPrefix = "ThisIsAnExample-Other-Prefix"
         
@@ -146,7 +146,7 @@ extension LogLevelSymbolBuilderTests {
     }
 }
 
-// MARK: - Helper
+// MARK: - Private helper class
 
 private class LogLevelSymbolBuilderTestsHelper {
     

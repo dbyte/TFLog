@@ -47,7 +47,7 @@ class LogLevelSymbolsTests: TFLogTestBase {
 
 extension LogLevelSymbolsTests {
     
-    func testInitializationShouldSetExpectedDefaults() {
+    final func testInitializationShouldSetExpectedDefaults() {
         sut = LogLevelSymbols()
         
         XCTAssertEqual(sut.action, "📘")

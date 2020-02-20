@@ -47,7 +47,7 @@ class LoggerFactoryTests: TFLogTestBase {
 
 extension LoggerFactoryTests {
     
-    func testCreateLogger() {
+    final func testCreateLogger() {
         let configuration = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         configuration.setSubsystemID("com.test.xyz")
         let logger = LoggerFactory.createLogger(configuration: configuration, category: "Some Category Name")
@@ -55,7 +55,7 @@ extension LoggerFactoryTests {
         XCTAssertTrue(logger is Logger, "Expected concrete type \(Logger.self), but returned \(logger.self)")
     }
     
-    func testCreateLogConfiguration() {
+    final func testCreateLogConfiguration() {
         let configuration = LoggerFactory.createLogConfiguration()
 
         XCTAssertTrue(

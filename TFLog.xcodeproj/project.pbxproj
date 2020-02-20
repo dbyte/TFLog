@@ -16,6 +16,8 @@
 		C557B87F23FDE9CB00A7F066 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C557B87E23FDE9CB00A7F066 /* README.md */; };
 		C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C26523FC38AA00BBE644 /* LogProviderMock.swift */; };
 		C574538223F863CD0031FFEE /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574538123F863CD0031FFEE /* LogLevel.swift */; };
+		C5929CB523FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */; };
+		C5929CB723FF2E440019FD11 /* OSLogProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */; };
 		C595F85423CEB11F003C2BC9 /* TFLog.h in Headers */ = {isa = PBXBuildFile; fileRef = C595F84623CEB11F003C2BC9 /* TFLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C595F85F23CEB1B5003C2BC9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F85E23CEB1B5003C2BC9 /* Logger.swift */; };
 		C595F86223CEB243003C2BC9 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F86123CEB243003C2BC9 /* FoundationExtensions.swift */; };
@@ -55,6 +57,8 @@
 		C557B87E23FDE9CB00A7F066 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C557C26523FC38AA00BBE644 /* LogProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProviderMock.swift; sourceTree = "<group>"; };
 		C574538123F863CD0031FFEE /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolBuilderTests.swift; sourceTree = "<group>"; };
+		C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogProviderTests.swift; sourceTree = "<group>"; };
 		C595F84323CEB11F003C2BC9 /* TFLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TFLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C595F84623CEB11F003C2BC9 /* TFLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFLog.h; sourceTree = "<group>"; };
 		C595F84723CEB11F003C2BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */,
 				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */,
 				C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */,
+				C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */,
+				C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -341,8 +347,10 @@
 			files = (
 				C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */,
 				C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */,
+				C5929CB523FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift in Sources */,
 				C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTest.swift in Sources */,
 				C5C42EC823FC1D26007EF477 /* LoggerTests.swift in Sources */,
+				C5929CB723FF2E440019FD11 /* OSLogProviderTests.swift in Sources */,
 				C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */,
 				C5E5F15723FC9403003C59DA /* LoggerFactoryTests.swift in Sources */,
 				C50A589F23FCC417002B1B10 /* LogLevelSymbolsTests.swift in Sources */,

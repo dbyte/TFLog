@@ -47,11 +47,11 @@ class LoggerTests: TFLogTestBase {
 
 extension LoggerTests {
 
-    func testGetConfigurationShouldReturnValidObject() {
+    final func testGetConfigurationShouldReturnValidObject() {
         XCTAssertNotNil(sut.getConfiguration())
     }
     
-    func testSetConfigurationShouldReplaceConfiguration() {
+    final func testSetConfigurationShouldReplaceConfiguration() {
         // Note we don't test class "Configuration" itself. We only test the proper work of method
         // "setConfiguration" within the sut.
         let originalConfig = LogConfigurationStub().withActivatedLoggingAndProviderMock()
@@ -63,7 +63,7 @@ extension LoggerTests {
         XCTAssertNotEqual(sut.getConfiguration().getIsLoggingActive(), originalConfig.getIsLoggingActive())
     }
     
-    func testShouldNotLogIfLoggingIsDeactivated() {
+    final func testShouldNotLogIfLoggingIsDeactivated() {
         sut = LoggerStub().deactivatedAndProviderMock()
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
@@ -85,7 +85,7 @@ extension LoggerTests {
         wait(for: expectationBag, timeout: 1)
     }
     
-    func testLogShouldComposeValidMessage() {
+    final func testLogShouldComposeValidMessage() {
         sut = LoggerStub().activatedAndProviderMock()
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
@@ -129,7 +129,7 @@ extension LoggerTests {
         XCTAssertEqual(providerMock.message, "")
     }
     
-    func testNewLine() {
+    final func testNewLine() {
         sut = LoggerStub().activatedAndProviderMock()
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
@@ -144,7 +144,7 @@ extension LoggerTests {
         XCTAssertEqual(providerMock.message, "Log_HeaderOnly" + "\n")
     }
     
-    func testVerticalDivider() {
+    final func testVerticalDivider() {
         sut = LoggerStub().activatedAndProviderMock()
         // swiftlint:disable:next force_cast
         let providerMock = sut.getConfiguration().getLogProvider() as! LogProviderMock
@@ -159,7 +159,7 @@ extension LoggerTests {
         XCTAssertEqual(providerMock.message, "Log_HeaderOnly" + String(repeating: "-", count: 80))
     }
     
-    func testShouldApplyTimestampIfActivated() {
+    final func testShouldApplyTimestampIfActivated() {
         sut = LoggerStub().activatedAndProviderMock()
         sut.getConfiguration().includeTimestamp(true) // activate timestamp
         
