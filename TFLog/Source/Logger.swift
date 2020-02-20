@@ -80,7 +80,7 @@ internal extension Logger {
     // Main log behaviour.
     func log(_ header: String? = "", data: Any? = nil, lev: LogLevel?) {
         
-        #if CUSTOMLOG
+        #if DEBUG
         // Pipeline core logging to background.
         // Tried for weak/unowned self capturing here, but won't work: self gets lost.
         // Did init/deinit tests by manually counting instances up & down; seems there is no memory leak.
@@ -108,7 +108,7 @@ internal extension Logger {
     }
     
     func newLine() {
-        #if CUSTOMLOG
+        #if DEBUG
         // Early return when switched off via configuration.
         guard configuration.getIsLoggingActive() else { return }
         
@@ -119,7 +119,7 @@ internal extension Logger {
     }
     
     func verticalDivider() {
-        #if CUSTOMLOG
+        #if DEBUG
         // Early return when logging was switched off via configuration.
         guard configuration.getIsLoggingActive() else { return }
         
