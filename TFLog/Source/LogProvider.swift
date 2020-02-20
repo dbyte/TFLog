@@ -44,12 +44,12 @@ public protocol LogProvider {
 open class LogProviderFactory {
     
     /// Returns a new default instance of OSLogProvider, conforming to LogProvider.
-    public static func createOSLogProvider() -> LogProvider {
+    open class func createOSLogProvider() -> LogProvider {
         return OSLogProvider()
     }
     
     /// Returns a new default instance of ConsoleLogProvider, conforming to LogProvider.
-    public static func createConsoleProvider() -> LogProvider {
+    open class func createConsoleProvider() -> LogProvider {
         return ConsoleLogProvider()
     }
 }
