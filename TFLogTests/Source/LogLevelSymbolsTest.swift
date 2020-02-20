@@ -26,7 +26,7 @@
 import XCTest
 @testable import TFLog
 
-class LogLevelSymbolsTest: XCTestCase {
+class LogLevelSymbolsTest: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     

@@ -24,15 +24,13 @@
 //
 
 import XCTest
-import Foundation
 @testable import TFLog
 
-class LoggerTest: XCTestCase {
+class LoggerTest: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
     var sut: LogInterface!
-    let timeout: TimeInterval = 3
 
     override func setUp() {
         super.setUp()
@@ -40,8 +38,8 @@ class LoggerTest: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
         sut = nil
+        super.tearDown()
     }
 }
     
