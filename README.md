@@ -4,7 +4,7 @@
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+<!-- [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) -->
 
 A protocol based Swift logging utility, currently supporting OSLog and Console.
 
@@ -26,7 +26,10 @@ A protocol based Swift logging utility, currently supporting OSLog and Console.
 
 ## Installation
 
-To get the full benefits, import `TFLog` wherever you want to log something and make your classes/structs conform
+#### Manually
+Download and drop ```TFLog/Source``` in your project.
+
+To get the full benefits, import `TFLog` whenever you want to log something and make your classes/structs conform
 to protocol 'Logging'.
 
 ``` swift
@@ -39,10 +42,6 @@ Not yet supported.
 
 #### Carthage
 Not yet supported.
-
-
-#### Manually
-Download and drop ```TFLog/Source``` in your project.  
 
 ## Usage example
 
