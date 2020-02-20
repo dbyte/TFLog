@@ -67,14 +67,15 @@ logger.log(data: anyData)
 
 <!-- We would love you for the contribution to **TFLog**, check the ``LICENSE`` file for more info. -->
 
-## Meta
+### Creator
 
-Tammo Fornalik – tflog@einmehrzeller.de
+Tammo Fornalik
+
+## Licence
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/dbyte](https://github.com/dbyte/)
-
 [swift-image]:https://img.shields.io/badge/swift-5.0-orange.svg
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
