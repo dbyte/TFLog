@@ -68,7 +68,7 @@ We would love you for the contribution to **TFLog**, check the ``LICENSE`` file 
 
 ## Meta
 
-Tammo Fornalik – YourEmail@example.com
+Tammo Fornalik – tflog@einmehrzeller.de
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
