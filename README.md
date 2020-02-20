@@ -67,9 +67,11 @@ logger.log(data: anyData)
 
 <!-- We would love you for the contribution to **TFLog**, check the ``LICENSE`` file for more info. -->
 
-## Meta
+### Creator
 
 Tammo Fornalik
+
+### Licence
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
