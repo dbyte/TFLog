@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C5003B6523FB5595002FD627 /* LogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6423FB5595002FD627 /* LogProvider.swift */; };
 		C5003B6723FB5B71002FD627 /* ConsoleLogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */; };
-		C50A589D23FCBDAE002B1B10 /* LogLevelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */; };
-		C50A589F23FCC417002B1B10 /* LogLevelSymbolsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */; };
+		C50A589D23FCBDAE002B1B10 /* LogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */; };
+		C50A589F23FCC417002B1B10 /* LogLevelSymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */; };
 		C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51563B023FC869300E0BEC3 /* LoggerStub.swift */; };
 		C557B87D23FDE1F000A7F066 /* TFLogTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */; };
 		C557B87F23FDE9CB00A7F066 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C557B87E23FDE9CB00A7F066 /* README.md */; };
@@ -24,11 +24,11 @@
 		C5A44A2823FB87D700D49E8E /* LogLevelSymbolBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A44A2723FB87D700D49E8E /* LogLevelSymbolBuilder.swift */; };
 		C5A44A2A23FB9D5500D49E8E /* LoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A44A2923FB9D5500D49E8E /* LoggerFactory.swift */; };
 		C5BF15F323FA1E89007AD16A /* OSLogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF15F223FA1E89007AD16A /* OSLogProvider.swift */; };
-		C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC723FC1D26007EF477 /* LoggerTest.swift */; };
+		C5C42EC823FC1D26007EF477 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC723FC1D26007EF477 /* LoggerTests.swift */; };
 		C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */; };
 		C5CB91FF23FD908200AD5C41 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = C5CB91FE23FD908200AD5C41 /* .travis.yml */; };
 		C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */; };
-		C5E5F15723FC9403003C59DA /* LoggerFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */; };
+		C5E5F15723FC9403003C59DA /* LoggerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15623FC9403003C59DA /* LoggerFactoryTests.swift */; };
 		C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */; };
 		C5EB7A0A23F8D74300A95A1C /* LogConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */; };
 		C5EB7A0E23F8F99700A95A1C /* LogLevelSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB7A0D23F8F99700A95A1C /* LogLevelSymbols.swift */; };
@@ -48,8 +48,8 @@
 /* Begin PBXFileReference section */
 		C5003B6423FB5595002FD627 /* LogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProvider.swift; sourceTree = "<group>"; };
 		C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogProvider.swift; sourceTree = "<group>"; };
-		C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTest.swift; sourceTree = "<group>"; };
-		C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolsTest.swift; sourceTree = "<group>"; };
+		C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTests.swift; sourceTree = "<group>"; };
+		C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolsTests.swift; sourceTree = "<group>"; };
 		C51563B023FC869300E0BEC3 /* LoggerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerStub.swift; sourceTree = "<group>"; };
 		C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFLogTestBase.swift; sourceTree = "<group>"; };
 		C557B87E23FDE9CB00A7F066 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -65,11 +65,11 @@
 		C5A44A2723FB87D700D49E8E /* LogLevelSymbolBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolBuilder.swift; sourceTree = "<group>"; };
 		C5A44A2923FB9D5500D49E8E /* LoggerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactory.swift; sourceTree = "<group>"; };
 		C5BF15F223FA1E89007AD16A /* OSLogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogProvider.swift; sourceTree = "<group>"; };
-		C5C42EC723FC1D26007EF477 /* LoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTest.swift; sourceTree = "<group>"; };
+		C5C42EC723FC1D26007EF477 /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
 		C5C42EC923FC2724007EF477 /* LogConfigurationStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationStub.swift; sourceTree = "<group>"; };
 		C5CB91FE23FD908200AD5C41 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensionsTest.swift; sourceTree = "<group>"; };
-		C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactoryTest.swift; sourceTree = "<group>"; };
+		C5E5F15623FC9403003C59DA /* LoggerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactoryTests.swift; sourceTree = "<group>"; };
 		C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfigurationTests.swift; sourceTree = "<group>"; };
 		C5EB7A0923F8D74300A95A1C /* LogConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfiguration.swift; sourceTree = "<group>"; };
 		C5EB7A0D23F8F99700A95A1C /* LogLevelSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbols.swift; sourceTree = "<group>"; };
@@ -157,11 +157,11 @@
 		C5C42EC623FC1CD1007EF477 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C5C42EC723FC1D26007EF477 /* LoggerTest.swift */,
-				C5E5F15623FC9403003C59DA /* LoggerFactoryTest.swift */,
+				C5C42EC723FC1D26007EF477 /* LoggerTests.swift */,
+				C5E5F15623FC9403003C59DA /* LoggerFactoryTests.swift */,
 				C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */,
-				C50A589C23FCBDAE002B1B10 /* LogLevelTest.swift */,
-				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTest.swift */,
+				C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */,
+				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */,
 				C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTest.swift */,
 			);
 			path = Source;
@@ -342,12 +342,12 @@
 				C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */,
 				C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */,
 				C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTest.swift in Sources */,
-				C5C42EC823FC1D26007EF477 /* LoggerTest.swift in Sources */,
+				C5C42EC823FC1D26007EF477 /* LoggerTests.swift in Sources */,
 				C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */,
-				C5E5F15723FC9403003C59DA /* LoggerFactoryTest.swift in Sources */,
-				C50A589F23FCC417002B1B10 /* LogLevelSymbolsTest.swift in Sources */,
+				C5E5F15723FC9403003C59DA /* LoggerFactoryTests.swift in Sources */,
+				C50A589F23FCC417002B1B10 /* LogLevelSymbolsTests.swift in Sources */,
 				C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */,
-				C50A589D23FCBDAE002B1B10 /* LogLevelTest.swift in Sources */,
+				C50A589D23FCBDAE002B1B10 /* LogLevelTests.swift in Sources */,
 				C557B87D23FDE1F000A7F066 /* TFLogTestBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

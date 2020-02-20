@@ -1,5 +1,5 @@
 //
-//  LoggerTest.swift
+//  LoggerTests.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,7 +26,7 @@
 import XCTest
 @testable import TFLog
 
-class LoggerTest: TFLogTestBase {
+class LoggerTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
@@ -45,7 +45,7 @@ class LoggerTest: TFLogTestBase {
     
 // MARK: - Tests
 
-extension LoggerTest {
+extension LoggerTests {
 
     func testGetConfigurationShouldReturnValidObject() {
         XCTAssertNotNil(sut.getConfiguration())
@@ -192,7 +192,7 @@ extension LoggerTest {
     }
 }
 
-private extension LoggerTest {
+private extension LoggerTests {
     
     // Returns a new expectation reference with fixed description
     func getNewLogExecutionExpectation(inverted: Bool = false) -> XCTestExpectation {

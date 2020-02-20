@@ -1,5 +1,5 @@
 //
-//  LoggerFactoryTest.swift
+//  LogLevelTests.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,15 +26,15 @@
 import XCTest
 @testable import TFLog
 
-class LoggerFactoryTest: TFLogTestBase {
+class LogLevelTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
-    var sut: LoggerFactory!
+    var sut: LogLevel!
     
     override func setUp() {
         super.setUp()
-        sut = LoggerFactory()
+        sut = LogLevel(rawValue: "")
     }
     
     override func tearDown() {
@@ -45,21 +45,25 @@ class LoggerFactoryTest: TFLogTestBase {
 
 // MARK: - Tests
 
-extension LoggerFactoryTest {
+extension LogLevelTests {
     
-    func testCreateLogger() {
-        let configuration = LogConfigurationStub().withActivatedLoggingAndProviderMock()
-        configuration.setSubsystemID("com.test.xyz")
-        let logger = LoggerFactory.createLogger(configuration: configuration, category: "Some Category Name")
+    func testGetSymbol() {
+        let config = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         
-        XCTAssertTrue(logger is Logger, "Expected concrete type \(Logger.self), but returned \(logger.self)")
-    }
-    
-    func testCreateLogConfiguration() {
-        let configuration = LoggerFactory.createLogConfiguration()
-
-        XCTAssertTrue(
-            configuration is LogConfiguration,
-            "Expected concrete type \(LogConfiguration.self), but returned \(configuration.self)")
+        let customLogLevelSymbols = LogLevelSymbolBuilder(forConfiguration: config)
+            .setAction("a")
+            .setCanceled("b")
+            .setError("c")
+            .setOther("d")
+            .setSuccess("e")
+            .setWarning("f")
+            .build()
+        
+        XCTAssertEqual(LogLevel.action.getSymbol(from: customLogLevelSymbols), "a")
+        XCTAssertEqual(LogLevel.canceled.getSymbol(from: customLogLevelSymbols), "b")
+        XCTAssertEqual(LogLevel.error.getSymbol(from: customLogLevelSymbols), "c")
+        XCTAssertEqual(LogLevel.other.getSymbol(from: customLogLevelSymbols), "d")
+        XCTAssertEqual(LogLevel.success.getSymbol(from: customLogLevelSymbols), "e")
+        XCTAssertEqual(LogLevel.warning.getSymbol(from: customLogLevelSymbols), "f")
     }
 }

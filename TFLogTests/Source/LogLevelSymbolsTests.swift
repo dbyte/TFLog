@@ -1,5 +1,5 @@
 //
-//  LogLevelTest.swift
+//  LogLevelSymbolsTests.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,15 +26,15 @@
 import XCTest
 @testable import TFLog
 
-class LogLevelTest: TFLogTestBase {
+class LogLevelSymbolsTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
-    var sut: LogLevel!
+    var sut: LogLevelSymbolsInterface!
     
     override func setUp() {
         super.setUp()
-        sut = LogLevel(rawValue: "")
+        sut = LogLevelSymbols()
     }
     
     override func tearDown() {
@@ -45,25 +45,16 @@ class LogLevelTest: TFLogTestBase {
 
 // MARK: - Tests
 
-extension LogLevelTest {
+extension LogLevelSymbolsTests {
     
-    func testGetSymbol() {
-        let config = LogConfigurationStub().withActivatedLoggingAndProviderMock()
+    func testInitializationShouldSetExpectedDefaults() {
+        sut = LogLevelSymbols()
         
-        let customLogLevelSymbols = LogLevelSymbolBuilder(forConfiguration: config)
-            .setAction("a")
-            .setCanceled("b")
-            .setError("c")
-            .setOther("d")
-            .setSuccess("e")
-            .setWarning("f")
-            .build()
-        
-        XCTAssertEqual(LogLevel.action.getSymbol(from: customLogLevelSymbols), "a")
-        XCTAssertEqual(LogLevel.canceled.getSymbol(from: customLogLevelSymbols), "b")
-        XCTAssertEqual(LogLevel.error.getSymbol(from: customLogLevelSymbols), "c")
-        XCTAssertEqual(LogLevel.other.getSymbol(from: customLogLevelSymbols), "d")
-        XCTAssertEqual(LogLevel.success.getSymbol(from: customLogLevelSymbols), "e")
-        XCTAssertEqual(LogLevel.warning.getSymbol(from: customLogLevelSymbols), "f")
+        XCTAssertEqual(sut.action, "📘")
+        XCTAssertEqual(sut.canceled, "📓")
+        XCTAssertEqual(sut.error, "📕")
+        XCTAssertEqual(sut.other, "📔")
+        XCTAssertEqual(sut.success, "📗")
+        XCTAssertEqual(sut.warning, "📙")
     }
 }

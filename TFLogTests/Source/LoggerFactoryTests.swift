@@ -1,5 +1,5 @@
 //
-//  LogLevelSymbolsTest.swift
+//  LoggerFactoryTest.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,15 +26,15 @@
 import XCTest
 @testable import TFLog
 
-class LogLevelSymbolsTest: TFLogTestBase {
+class LoggerFactoryTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
-    var sut: LogLevelSymbolsInterface!
+    var sut: LoggerFactory!
     
     override func setUp() {
         super.setUp()
-        sut = LogLevelSymbols()
+        sut = LoggerFactory()
     }
     
     override func tearDown() {
@@ -45,16 +45,21 @@ class LogLevelSymbolsTest: TFLogTestBase {
 
 // MARK: - Tests
 
-extension LogLevelSymbolsTest {
+extension LoggerFactoryTests {
     
-    func testInitializationShouldSetExpectedDefaults() {
-        sut = LogLevelSymbols()
+    func testCreateLogger() {
+        let configuration = LogConfigurationStub().withActivatedLoggingAndProviderMock()
+        configuration.setSubsystemID("com.test.xyz")
+        let logger = LoggerFactory.createLogger(configuration: configuration, category: "Some Category Name")
         
-        XCTAssertEqual(sut.action, "📘")
-        XCTAssertEqual(sut.canceled, "📓")
-        XCTAssertEqual(sut.error, "📕")
-        XCTAssertEqual(sut.other, "📔")
-        XCTAssertEqual(sut.success, "📗")
-        XCTAssertEqual(sut.warning, "📙")
+        XCTAssertTrue(logger is Logger, "Expected concrete type \(Logger.self), but returned \(logger.self)")
+    }
+    
+    func testCreateLogConfiguration() {
+        let configuration = LoggerFactory.createLogConfiguration()
+
+        XCTAssertTrue(
+            configuration is LogConfiguration,
+            "Expected concrete type \(LogConfiguration.self), but returned \(configuration.self)")
     }
 }

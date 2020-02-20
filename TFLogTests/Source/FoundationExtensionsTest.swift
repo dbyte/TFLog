@@ -1,5 +1,5 @@
 //
-//  FoundationExtensionsTest.swift
+//  StringExtensionTests.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,7 +26,7 @@
 import XCTest
 @testable import TFLog
 
-class StringExtensionTest: XCTestCase {
+class StringExtensionTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
@@ -45,5 +45,5 @@ class StringExtensionTest: XCTestCase {
 
 // MARK: - Tests
 
-extension StringExtensionTest {
+extension StringExtensionTests {
 }
