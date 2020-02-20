@@ -70,27 +70,24 @@ private extension OSLogProvider {
     private func adapt(subsystem: String) -> String {
         if subsystem.isEmpty {
             return "com.dbyte.tflog"
-        } else {
-            return subsystem
         }
+        return subsystem
     }
     
     // Convert category
     private func adapt(category: String) -> String {
         if category.isEmpty {
             return "Common"
-        } else {
-            return category
         }
+        return category
     }
     
     // Convert private/public data attribute
     private func adapt(isPublic: Bool) -> StaticString {
         if isPublic {
             return "%{PUBLIC}@" as StaticString
-        } else {
-            return "%{PRIVATE}@" as StaticString
         }
+        return "%{PRIVATE}@" as StaticString
     }
 }
 
