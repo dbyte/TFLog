@@ -57,13 +57,13 @@ public protocol LogConfigurable {
     func getLogProvider() -> LogProvider
     
     /// Get all current log level symbols.
-    func getLogLevelSymbols() -> LogLevelSymbolsInterface
+    func getLogLevelSymbols() -> LogLevelPrefixInterface
     
     /// Replaces unicode log level symbols in your logger configuration.
-    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable
+    func replaceLogLevelSymbols() -> LogLevelPrefixBuildable
     
     /// Replace current set of unicode log level symbols with another.
-    func replaceSymbols(with symbols: LogLevelSymbolsInterface)
+    func replaceSymbols(with symbols: LogLevelPrefixInterface)
     
     /// Returns true if timestamps are embedded at the beginning of each log message.
     func getIsTimestampIncluded() -> Bool
@@ -82,13 +82,13 @@ internal class LogConfiguration: LogConfigurable {
     internal private(set) var logProvider: LogProvider
     internal private(set) var isTimestampIncluded: Bool
     internal private(set) var subsystemID: String
-    internal private(set) var logLevelSymbols: LogLevelSymbolsInterface
+    internal private(set) var logLevelSymbols: LogLevelPrefixInterface
     
     internal init() {
         self.isLoggingActive = true // logging is active by default
         self.logProvider = OSLogProvider() // Apple os.log framework is default
         self.isTimestampIncluded = false
-        self.logLevelSymbols = LogLevelSymbols() // Set default log level symbols
+        self.logLevelSymbols = LogLevelPrefix() // Set default log level symbols
         self.subsystemID = ""
     }
 }
@@ -117,11 +117,11 @@ internal extension LogConfiguration {
         self.subsystemID = subsystemID
     }
     
-    func replaceLogLevelSymbols() -> LogLevelSymbolBuildable {
-        return LogLevelSymbolBuilder(forConfiguration: self)
+    func replaceLogLevelSymbols() -> LogLevelPrefixBuildable {
+        return LogLevelPrefixBuilder(forConfiguration: self)
     }
     
-    func replaceSymbols(with symbols: LogLevelSymbolsInterface) {
+    func replaceSymbols(with symbols: LogLevelPrefixInterface) {
         self.logLevelSymbols = symbols
     }
     
@@ -133,7 +133,7 @@ internal extension LogConfiguration {
         return logProvider
     }
     
-    func getLogLevelSymbols() -> LogLevelSymbolsInterface {
+    func getLogLevelSymbols() -> LogLevelPrefixInterface {
         return logLevelSymbols
     }
     

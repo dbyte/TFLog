@@ -30,11 +30,11 @@ class LogLevelSymbolsTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
-    var sut: LogLevelSymbolsInterface!
+    var sut: LogLevelPrefixInterface!
     
     override func setUp() {
         super.setUp()
-        sut = LogLevelSymbols()
+        sut = LogLevelPrefix()
     }
     
     override func tearDown() {
@@ -48,7 +48,7 @@ class LogLevelSymbolsTests: TFLogTestBase {
 extension LogLevelSymbolsTests {
     
     final func testInitializationShouldSetExpectedDefaults() {
-        sut = LogLevelSymbols()
+        sut = LogLevelPrefix()
         
         XCTAssertEqual(sut.action, "📘")
         XCTAssertEqual(sut.canceled, "📓")

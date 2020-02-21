@@ -28,7 +28,7 @@
 /// Provided log levels.
 ///
 /// You can replace the unicode symbols by using `LogConfigurable.replaceLogLevelSymbols()` .
-/// - See also: `LogLevelSymbolBuilder`
+/// - See also: `LogLevelPrefixBuilder`
 public enum LogLevel: String, CaseIterable {
     
     case error
@@ -39,7 +39,7 @@ public enum LogLevel: String, CaseIterable {
     case other
     
     // It's possible for consumers to replace the corresponding unicode symbols.
-    internal func getSymbol(from symbols: LogLevelSymbolsInterface) -> String {
+    internal func getSymbol(from symbols: LogLevelPrefixInterface) -> String {
         var symbol: String {
             
             switch self {

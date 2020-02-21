@@ -58,15 +58,15 @@ extension LogConfigurationTests {
         XCTAssertEqual(config.isTimestampIncluded, false)
         XCTAssertEqual(config.subsystemID, "")
         
-        let defaultSymbols = LogLevelSymbols()
+        let defaultSymbols = LogLevelPrefix()
         
-        if config.logLevelSymbols is LogLevelSymbols == false {
-            XCTFail("Expected default type \(LogLevelSymbols.self) but returned \(config.logLevelSymbols)")
+        if config.logLevelSymbols is LogLevelPrefix == false {
+            XCTFail("Expected default type \(LogLevelPrefix.self) but returned \(config.logLevelSymbols)")
             return // return early, else code below would stall testing
         }
         
         // swiftlint:disable:next force_cast
-        XCTAssertEqual(defaultSymbols, config.logLevelSymbols as! LogLevelSymbols)
+        XCTAssertEqual(defaultSymbols, config.logLevelSymbols as! LogLevelPrefix)
     }
     
     final func testActivateLogging() {
@@ -114,7 +114,7 @@ extension LogConfigurationTests {
     }
     
     final func testReplaceLogLevelSymbols() {
-        let expectedLogLevelSymbols: LogLevelSymbolsInterface =
+        let expectedLogLevelSymbols: LogLevelPrefixInterface =
             sut.replaceLogLevelSymbols()
                 .setAction("a")
                 .setCanceled("b")
@@ -126,13 +126,13 @@ extension LogConfigurationTests {
         
         let cachedLogLevelSymbols = sut.getLogLevelSymbols()
         
-        if cachedLogLevelSymbols as? LogLevelSymbols == nil {
-            XCTFail("Object cachedLogLevelSymbols could not be downcasted to \(LogLevelSymbols.self). " +
-                "Expected concrete type for \(LogLevelSymbolsInterface.self).")
+        if cachedLogLevelSymbols as? LogLevelPrefix == nil {
+            XCTFail("Object cachedLogLevelSymbols could not be downcasted to \(LogLevelPrefix.self). " +
+                "Expected concrete type for \(LogLevelPrefixInterface.self).")
             return // return early, else code below would stall testing
         }
         
-        XCTAssertEqual(cachedLogLevelSymbols as? LogLevelSymbols, expectedLogLevelSymbols as? LogLevelSymbols)
+        XCTAssertEqual(cachedLogLevelSymbols as? LogLevelPrefix, expectedLogLevelSymbols as? LogLevelPrefix)
     }
     
     final func testReplaceSymbols() {
@@ -148,12 +148,12 @@ extension LogConfigurationTests {
         
         sut.replaceSymbols(with: expectedLogLevelSymbols)
         
-        if expectedLogLevelSymbols as? LogLevelSymbols == nil {
-            XCTFail("Object expectedLogLevelSymbols could not be downcasted to \(LogLevelSymbols.self). " +
-                "Expected concrete type for \(LogLevelSymbolsInterface.self).")
+        if expectedLogLevelSymbols as? LogLevelPrefix == nil {
+            XCTFail("Object expectedLogLevelSymbols could not be downcasted to \(LogLevelPrefix.self). " +
+                "Expected concrete type for \(LogLevelPrefixInterface.self).")
             return // return early, else code below would stall testing
         }
         
-        XCTAssertNotEqual(expectedLogLevelSymbols as? LogLevelSymbols, defaultLogLevelSymbols as? LogLevelSymbols)
+        XCTAssertNotEqual(expectedLogLevelSymbols as? LogLevelPrefix, defaultLogLevelSymbols as? LogLevelPrefix)
     }
 }

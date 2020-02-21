@@ -1,5 +1,5 @@
 //
-//  LogLevelSymbolBuilder.swift
+//  LogLevelPrefixBuilder.swift
 //  TFLog
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -23,59 +23,59 @@
 //  THE SOFTWARE.
 //
 
-// MARK: - Interface for LogLevelSymbolBuilder
+// MARK: - Interface for LogLevelPrefixBuilder
 
 /// Log level unicode symbols customization.
 ///
 /// Use this builder to create a new set of symbols or just set the ones you want to overwrite.
-/// - See also: `LogConfigurable`, `LogLevelSymbolsInterface`
-public protocol LogLevelSymbolBuildable {
+/// - See also: `LogConfigurable`, `LogLevelPrefixInterface`
+public protocol LogLevelPrefixBuildable {
     
     /// Set _error_ prefix
     /// - Parameter error: Sets a prefix for log level _error_ in form of unicode symbol or text
     @discardableResult
-    func setError(_ error: String) -> LogLevelSymbolBuildable
+    func setError(_ error: String) -> LogLevelPrefixBuildable
     
     /// Set _warning_ prefix
     /// - Parameter warning: Sets a prefix for log level _warning_ in form of unicode symbol or text
     @discardableResult
-    func setWarning(_ warning: String) -> LogLevelSymbolBuildable
+    func setWarning(_ warning: String) -> LogLevelPrefixBuildable
     
     /// Set _success_ prefix
     /// - Parameter success: Sets a prefix for log level _success_ in form of unicode symbol or text
     @discardableResult
-    func setSuccess(_ success: String) -> LogLevelSymbolBuildable
+    func setSuccess(_ success: String) -> LogLevelPrefixBuildable
     
     /// Set _action_ prefix
     /// - Parameter action: Sets a prefix for log level _action_ in form of unicode symbol or text
     @discardableResult
-    func setAction(_ action: String) -> LogLevelSymbolBuildable
+    func setAction(_ action: String) -> LogLevelPrefixBuildable
     
     /// Set _canceled_ prefix
     /// - Parameter canceled: Sets a prefix for log level _canceled_ in form of unicode symbol or text
     @discardableResult
-    func setCanceled(_ canceled: String) -> LogLevelSymbolBuildable
+    func setCanceled(_ canceled: String) -> LogLevelPrefixBuildable
     
     /// Set _other_ prefix
     /// - Parameter other: Sets a prefix for log level _other_ in form of unicode symbol or text
     @discardableResult
-    func setOther(_ other: String) -> LogLevelSymbolBuildable
+    func setOther(_ other: String) -> LogLevelPrefixBuildable
     
     ///
     @discardableResult
-    func buildAndReplace() -> LogLevelSymbolsInterface
+    func buildAndReplace() -> LogLevelPrefixInterface
     
     ///
     @discardableResult
-    func build() -> LogLevelSymbolsInterface
+    func build() -> LogLevelPrefixInterface
 }
 
 // MARK: - Builder implementation for replacing log level unicode symbols
 
 /// Log level unicode symbols customization.
-internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {
+internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     
-    private var logLevelSymbols: LogLevelSymbolsInterface
+    private var logLevelSymbols: LogLevelPrefixInterface
     private var config: LogConfigurable?
     
     init(forConfiguration config: LogConfigurable) {
@@ -83,42 +83,42 @@ internal final class LogLevelSymbolBuilder: LogLevelSymbolBuildable {
         logLevelSymbols = config.getLogLevelSymbols()
     }
     
-    func setError(_ error: String) -> LogLevelSymbolBuildable {
+    func setError(_ error: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.error = error
         return self
     }
     
-    func setWarning(_ warning: String) -> LogLevelSymbolBuildable {
+    func setWarning(_ warning: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.warning = warning
         return self
     }
     
-    func setSuccess(_ success: String) -> LogLevelSymbolBuildable {
+    func setSuccess(_ success: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.success = success
         return self
     }
     
-    func setAction(_ action: String) -> LogLevelSymbolBuildable {
+    func setAction(_ action: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.action = action
         return self
     }
     
-    func setCanceled(_ canceled: String) -> LogLevelSymbolBuildable {
+    func setCanceled(_ canceled: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.canceled = canceled
         return self
     }
     
-    func setOther(_ other: String) -> LogLevelSymbolBuildable {
+    func setOther(_ other: String) -> LogLevelPrefixBuildable {
         logLevelSymbols.other = other
         return self
     }
     
-    func buildAndReplace() -> LogLevelSymbolsInterface {
+    func buildAndReplace() -> LogLevelPrefixInterface {
         config?.replaceSymbols(with: logLevelSymbols)
         return logLevelSymbols
     }
     
-    func build() -> LogLevelSymbolsInterface {
+    func build() -> LogLevelPrefixInterface {
         return logLevelSymbols
     }
 }

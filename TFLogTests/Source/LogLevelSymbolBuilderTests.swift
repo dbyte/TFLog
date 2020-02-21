@@ -28,7 +28,7 @@ import XCTest
 
 class LogLevelSymbolBuilderTests: TFLogTestBase {
     
-    var sut: LogLevelSymbolBuildable!
+    var sut: LogLevelPrefixBuildable!
     var configuration: LogConfigurable!
     
     //swiftlint:disable:next identifier_name
@@ -39,7 +39,7 @@ class LogLevelSymbolBuilderTests: TFLogTestBase {
     override func setUp() {
         super.setUp()
         configuration = LogConfigurationStub().withActivatedLoggingAndProviderMock()
-        sut = LogLevelSymbolBuilder(forConfiguration: configuration)
+        sut = LogLevelPrefixBuilder(forConfiguration: configuration)
         h = LogLevelSymbolBuilderTestsHelper()
     }
     
@@ -151,7 +151,7 @@ extension LogLevelSymbolBuilderTests {
 private class LogLevelSymbolBuilderTestsHelper {
     
     var expectedPrefix = ""
-    var builderObject: LogLevelSymbolBuildable!
+    var builderObject: LogLevelPrefixBuildable!
     var returnedBuilderPrefix = ""
     var returnedConfigurationPrefix = ""
     

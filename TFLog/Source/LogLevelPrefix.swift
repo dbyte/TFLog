@@ -1,5 +1,5 @@
 //
-//  LogLevelSymbols.swift
+//  LogLevelPrefix.swift
 //  TFLog
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -23,12 +23,12 @@
 //  THE SOFTWARE.
 //
 
-// MARK: - Interface for LogLevelSymbols
+// MARK: - Interface for LogLevelPrefix
 
 /// Represents all provided log level unicode symbols of this framework.
 /// Log level unicode symbols customization can be done via `LogConfigurable.replaceLogLevelSymbols()` .
-/// - See also: `LogLevelSymbolBuilder`
-public protocol LogLevelSymbolsInterface {
+/// - See also: `LogLevelPrefixBuilder`
+public protocol LogLevelPrefixInterface {
     
     /// Error log level unicode symbol
     var error: String { get set }
@@ -51,7 +51,7 @@ public protocol LogLevelSymbolsInterface {
 
 // MARK: - Log level unicode symbols
 
-internal struct LogLevelSymbols: LogLevelSymbolsInterface, Equatable {
+internal struct LogLevelPrefix: LogLevelPrefixInterface, Equatable {
     
     // MARK: Properties/Init
     

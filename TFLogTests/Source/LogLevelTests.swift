@@ -50,7 +50,7 @@ extension LogLevelTests {
     final func testGetSymbol() {
         let config = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         
-        let customLogLevelSymbols = LogLevelSymbolBuilder(forConfiguration: config)
+        let customLogLevelSymbols = LogLevelPrefixBuilder(forConfiguration: config)
             .setAction("a")
             .setCanceled("b")
             .setError("c")
