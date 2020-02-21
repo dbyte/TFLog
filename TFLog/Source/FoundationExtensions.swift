@@ -30,6 +30,8 @@ import Foundation
 internal extension String {
 
     func removeExtraSpaces() -> String {
-        return self.replacingOccurrences(of: "[^\\S\r\n]+", with: " ", options: .regularExpression, range: nil)
+        return self
+            .replacingOccurrences(of: "[^\\S\r\n]+", with: " ", options: .regularExpression, range: nil)
+            .trimmingCharacters(in: .whitespaces)
     }
 }
