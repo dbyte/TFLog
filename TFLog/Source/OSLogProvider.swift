@@ -59,7 +59,7 @@ private extension OSLogProvider {
     private func adapt(logLevel: LogLevel?) -> OSLogType {
         switch logLevel {
         case .action:
-            return OSLogType.debug
+            return OSLogType.info // OSLogType.debug inop?
         case .canceled:
             return OSLogType.info
         case .error:
@@ -71,7 +71,7 @@ private extension OSLogProvider {
         case .warning:
             return OSLogType.error
         default:
-            return OSLogType.debug
+            return OSLogType.info // OSLogType.debug inop?
         }
     }
     
