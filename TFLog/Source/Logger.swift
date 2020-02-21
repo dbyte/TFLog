@@ -166,27 +166,27 @@ private extension Logger {
         
         let timestampStringAndWhitespace = configuration.getIsTimestampIncluded() ? logData.timestampStr + " " : ""
         
-        let logLevelSymbol = getLogLevelSymbol(lev: logData.logLevel)
-        let logLevelSymbolAndNewline = logLevelSymbol.isEmpty ? "" : logLevelSymbol + "\n"
-        let logLevelSymbolAndWhitespace = logLevelSymbol.isEmpty ? "" : logLevelSymbol + " "
+        let logLevelPrefix = getLogLevelSymbol(lev: logData.logLevel)
+        let logLevelPrefixAndNewline = logLevelPrefix.isEmpty ? "" : logLevelPrefix + "\n"
+        let logLevelPrefixAndWhitespace = logLevelPrefix.isEmpty ? "" : logLevelPrefix + " "
         
         switch(header, dataString) {
         case let (header, dataString) where !header.isEmpty && dataString.isEmpty:
             // Only "header" parameter is set, no data
-            final = timestampStringAndWhitespace + logLevelSymbolAndWhitespace + header
+            final = timestampStringAndWhitespace + logLevelPrefixAndWhitespace + header
             
         case let (header, dataString) where header.isEmpty && !dataString.isEmpty:
             // Only dataString is set, no header
-            final = timestampStringAndWhitespace + logLevelSymbolAndNewline + dataString
+            final = timestampStringAndWhitespace + logLevelPrefixAndNewline + dataString
             
         case let (header, dataString) where !header.isEmpty && !dataString.isEmpty:
             // Both header and dataString are set
-            final = timestampStringAndWhitespace + logLevelSymbolAndWhitespace + header + "\n" + dataString
+            final = timestampStringAndWhitespace + logLevelPrefixAndWhitespace + header + "\n" + dataString
             
-        case let (header, dataString) where header.isEmpty && dataString.isEmpty && !logLevelSymbol.isEmpty:
+        case let (header, dataString) where header.isEmpty && dataString.isEmpty && !logLevelPrefix.isEmpty:
             // This case isn't part of protocol LogInterface yet (v1.0.0). Anyway doesn't hurt to
             // keep it, though it can't be tested yet.
-            final = logLevelSymbol
+            final = logLevelPrefix
             
         default:
             final = ""

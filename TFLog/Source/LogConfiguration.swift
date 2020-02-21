@@ -82,13 +82,13 @@ internal class LogConfiguration: LogConfigurable {
     internal private(set) var logProvider: LogProvider
     internal private(set) var isTimestampIncluded: Bool
     internal private(set) var subsystemID: String
-    internal private(set) var logLevelSymbols: LogLevelPrefixInterface
+    internal private(set) var logLevelPrefix: LogLevelPrefixInterface
     
     internal init() {
         self.isLoggingActive = true // logging is active by default
         self.logProvider = OSLogProvider() // Apple os.log framework is default
         self.isTimestampIncluded = false
-        self.logLevelSymbols = LogLevelPrefix() // Set default log level symbols
+        self.logLevelPrefix = LogLevelPrefix() // Set default log level symbols
         self.subsystemID = ""
     }
 }
@@ -122,7 +122,7 @@ internal extension LogConfiguration {
     }
     
     func replaceSymbols(with symbols: LogLevelPrefixInterface) {
-        self.logLevelSymbols = symbols
+        self.logLevelPrefix = symbols
     }
     
     func getIsLoggingActive() -> Bool {
@@ -134,7 +134,7 @@ internal extension LogConfiguration {
     }
     
     func getLogLevelSymbols() -> LogLevelPrefixInterface {
-        return logLevelSymbols
+        return logLevelPrefix
     }
     
     func getIsTimestampIncluded() -> Bool {

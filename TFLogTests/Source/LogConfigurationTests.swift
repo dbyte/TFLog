@@ -60,13 +60,13 @@ extension LogConfigurationTests {
         
         let defaultSymbols = LogLevelPrefix()
         
-        if config.logLevelSymbols is LogLevelPrefix == false {
-            XCTFail("Expected default type \(LogLevelPrefix.self) but returned \(config.logLevelSymbols)")
+        if config.logLevelPrefix is LogLevelPrefix == false {
+            XCTFail("Expected default type \(LogLevelPrefix.self) but returned \(config.logLevelPrefix)")
             return // return early, else code below would stall testing
         }
         
         // swiftlint:disable:next force_cast
-        XCTAssertEqual(defaultSymbols, config.logLevelSymbols as! LogLevelPrefix)
+        XCTAssertEqual(defaultSymbols, config.logLevelPrefix as! LogLevelPrefix)
     }
     
     final func testActivateLogging() {

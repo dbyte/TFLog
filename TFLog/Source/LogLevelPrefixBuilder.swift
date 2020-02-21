@@ -75,50 +75,50 @@ public protocol LogLevelPrefixBuildable {
 /// Log level unicode symbols customization.
 internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     
-    private var logLevelSymbols: LogLevelPrefixInterface
+    private var logLevelPrefix: LogLevelPrefixInterface
     private var config: LogConfigurable?
     
     init(forConfiguration config: LogConfigurable) {
         self.config = config
-        logLevelSymbols = config.getLogLevelSymbols()
+        logLevelPrefix = config.getLogLevelSymbols()
     }
     
     func setError(_ error: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.error = error
+        logLevelPrefix.error = error
         return self
     }
     
     func setWarning(_ warning: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.warning = warning
+        logLevelPrefix.warning = warning
         return self
     }
     
     func setSuccess(_ success: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.success = success
+        logLevelPrefix.success = success
         return self
     }
     
     func setAction(_ action: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.action = action
+        logLevelPrefix.action = action
         return self
     }
     
     func setCanceled(_ canceled: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.canceled = canceled
+        logLevelPrefix.canceled = canceled
         return self
     }
     
     func setOther(_ other: String) -> LogLevelPrefixBuildable {
-        logLevelSymbols.other = other
+        logLevelPrefix.other = other
         return self
     }
     
     func buildAndReplace() -> LogLevelPrefixInterface {
-        config?.replaceSymbols(with: logLevelSymbols)
-        return logLevelSymbols
+        config?.replaceSymbols(with: logLevelPrefix)
+        return logLevelPrefix
     }
     
     func build() -> LogLevelPrefixInterface {
-        return logLevelSymbols
+        return logLevelPrefix
     }
 }

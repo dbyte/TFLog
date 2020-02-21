@@ -10,13 +10,13 @@
 		C5003B6523FB5595002FD627 /* LogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6423FB5595002FD627 /* LogProvider.swift */; };
 		C5003B6723FB5B71002FD627 /* ConsoleLogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */; };
 		C50A589D23FCBDAE002B1B10 /* LogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */; };
-		C50A589F23FCC417002B1B10 /* LogLevelSymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */; };
+		C50A589F23FCC417002B1B10 /* LogLevelPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A589E23FCC417002B1B10 /* LogLevelPrefixTests.swift */; };
 		C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51563B023FC869300E0BEC3 /* LoggerStub.swift */; };
 		C557B87D23FDE1F000A7F066 /* TFLogTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */; };
 		C557B87F23FDE9CB00A7F066 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C557B87E23FDE9CB00A7F066 /* README.md */; };
 		C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C26523FC38AA00BBE644 /* LogProviderMock.swift */; };
 		C574538223F863CD0031FFEE /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574538123F863CD0031FFEE /* LogLevel.swift */; };
-		C5929CB523FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */; };
+		C5929CB523FF07BF0019FD11 /* LogLevelPrefixBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB423FF07BF0019FD11 /* LogLevelPrefixBuilderTests.swift */; };
 		C5929CB723FF2E440019FD11 /* OSLogProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */; };
 		C5929CB923FF47EE0019FD11 /* LogProviderFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CB823FF47EE0019FD11 /* LogProviderFactoryTests.swift */; };
 		C5929CBB23FF4D920019FD11 /* LogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5929CBA23FF4D920019FD11 /* LogData.swift */; };
@@ -53,13 +53,13 @@
 		C5003B6423FB5595002FD627 /* LogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProvider.swift; sourceTree = "<group>"; };
 		C5003B6623FB5B71002FD627 /* ConsoleLogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogProvider.swift; sourceTree = "<group>"; };
 		C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTests.swift; sourceTree = "<group>"; };
-		C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolsTests.swift; sourceTree = "<group>"; };
+		C50A589E23FCC417002B1B10 /* LogLevelPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelPrefixTests.swift; sourceTree = "<group>"; };
 		C51563B023FC869300E0BEC3 /* LoggerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerStub.swift; sourceTree = "<group>"; };
 		C557B87C23FDE1F000A7F066 /* TFLogTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFLogTestBase.swift; sourceTree = "<group>"; };
 		C557B87E23FDE9CB00A7F066 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C557C26523FC38AA00BBE644 /* LogProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProviderMock.swift; sourceTree = "<group>"; };
 		C574538123F863CD0031FFEE /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
-		C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelSymbolBuilderTests.swift; sourceTree = "<group>"; };
+		C5929CB423FF07BF0019FD11 /* LogLevelPrefixBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelPrefixBuilderTests.swift; sourceTree = "<group>"; };
 		C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogProviderTests.swift; sourceTree = "<group>"; };
 		C5929CB823FF47EE0019FD11 /* LogProviderFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProviderFactoryTests.swift; sourceTree = "<group>"; };
 		C5929CBA23FF4D920019FD11 /* LogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogData.swift; sourceTree = "<group>"; };
@@ -170,9 +170,9 @@
 				C5E5F15623FC9403003C59DA /* LoggerFactoryTests.swift */,
 				C5E5F15823FC9A09003C59DA /* LogConfigurationTests.swift */,
 				C50A589C23FCBDAE002B1B10 /* LogLevelTests.swift */,
-				C50A589E23FCC417002B1B10 /* LogLevelSymbolsTests.swift */,
+				C50A589E23FCC417002B1B10 /* LogLevelPrefixTests.swift */,
 				C5CB920023FDABFE00AD5C41 /* FoundationExtensionsTests.swift */,
-				C5929CB423FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift */,
+				C5929CB423FF07BF0019FD11 /* LogLevelPrefixBuilderTests.swift */,
 				C5929CB823FF47EE0019FD11 /* LogProviderFactoryTests.swift */,
 				C5929CB623FF2E440019FD11 /* OSLogProviderTests.swift */,
 			);
@@ -354,13 +354,13 @@
 			files = (
 				C5E5F15923FC9A09003C59DA /* LogConfigurationTests.swift in Sources */,
 				C5C42ECA23FC2724007EF477 /* LogConfigurationStub.swift in Sources */,
-				C5929CB523FF07BF0019FD11 /* LogLevelSymbolBuilderTests.swift in Sources */,
+				C5929CB523FF07BF0019FD11 /* LogLevelPrefixBuilderTests.swift in Sources */,
 				C5CB920123FDABFE00AD5C41 /* FoundationExtensionsTests.swift in Sources */,
 				C5C42EC823FC1D26007EF477 /* LoggerTests.swift in Sources */,
 				C5929CB723FF2E440019FD11 /* OSLogProviderTests.swift in Sources */,
 				C51563B123FC869300E0BEC3 /* LoggerStub.swift in Sources */,
 				C5E5F15723FC9403003C59DA /* LoggerFactoryTests.swift in Sources */,
-				C50A589F23FCC417002B1B10 /* LogLevelSymbolsTests.swift in Sources */,
+				C50A589F23FCC417002B1B10 /* LogLevelPrefixTests.swift in Sources */,
 				C557C26623FC38AB00BBE644 /* LogProviderMock.swift in Sources */,
 				C50A589D23FCBDAE002B1B10 /* LogLevelTests.swift in Sources */,
 				C5929CB923FF47EE0019FD11 /* LogProviderFactoryTests.swift in Sources */,

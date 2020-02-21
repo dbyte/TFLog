@@ -1,5 +1,5 @@
 //
-//  LogLevelSymbolsTests.swift
+//  LogLevelPrefixTests.swift
 //  TFLogTests
 //
 //  Copyright (c) 2020 dbyte, Tammo Fornalik.
@@ -26,7 +26,7 @@
 import XCTest
 @testable import TFLog
 
-class LogLevelSymbolsTests: TFLogTestBase {
+class LogLevelPrefixTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
@@ -45,7 +45,7 @@ class LogLevelSymbolsTests: TFLogTestBase {
 
 // MARK: - Tests
 
-extension LogLevelSymbolsTests {
+extension LogLevelPrefixTests {
     
     final func testInitializationShouldSetExpectedDefaults() {
         sut = LogLevelPrefix()
