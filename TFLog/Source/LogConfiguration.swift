@@ -56,14 +56,14 @@ public protocol LogConfigurable {
     /// Get current log provider object.
     func getLogProvider() -> LogProvider
     
-    /// Get all current log level symbols.
-    func getLogLevelSymbols() -> LogLevelPrefixInterface
+    /// Get all current log level prefixes.
+    func getLogLevelPrefix() -> LogLevelPrefixInterface
     
-    /// Replaces unicode log level symbols in your logger configuration.
-    func replaceLogLevelSymbols() -> LogLevelPrefixBuildable
+    /// Replaces unicode log level prefixes in your logger configuration.
+    func replaceLogLevelPrefix() -> LogLevelPrefixBuildable
     
-    /// Replace current set of unicode log level symbols with another.
-    func replaceSymbols(with symbols: LogLevelPrefixInterface)
+    /// Replace current set of unicode log level prefixes with another.
+    func replacePrefixes(with prefixes: LogLevelPrefixInterface)
     
     /// Returns true if timestamps are embedded at the beginning of each log message.
     func getIsTimestampIncluded() -> Bool
@@ -82,13 +82,13 @@ internal class LogConfiguration: LogConfigurable {
     internal private(set) var logProvider: LogProvider
     internal private(set) var isTimestampIncluded: Bool
     internal private(set) var subsystemID: String
-    internal private(set) var logLevelPrefix: LogLevelPrefixInterface
+    internal private(set) var logLevelPrefixes: LogLevelPrefixInterface
     
     internal init() {
         self.isLoggingActive = true // logging is active by default
         self.logProvider = OSLogProvider() // Apple os.log framework is default
         self.isTimestampIncluded = false
-        self.logLevelPrefix = LogLevelPrefix() // Set default log level symbols
+        self.logLevelPrefixes = LogLevelPrefix() // Set default log level prefixes
         self.subsystemID = ""
     }
 }
@@ -117,12 +117,12 @@ internal extension LogConfiguration {
         self.subsystemID = subsystemID
     }
     
-    func replaceLogLevelSymbols() -> LogLevelPrefixBuildable {
+    func replaceLogLevelPrefix() -> LogLevelPrefixBuildable {
         return LogLevelPrefixBuilder(forConfiguration: self)
     }
     
-    func replaceSymbols(with symbols: LogLevelPrefixInterface) {
-        self.logLevelPrefix = symbols
+    func replacePrefixes(with prefixes: LogLevelPrefixInterface) {
+        self.logLevelPrefixes = prefixes
     }
     
     func getIsLoggingActive() -> Bool {
@@ -133,8 +133,8 @@ internal extension LogConfiguration {
         return logProvider
     }
     
-    func getLogLevelSymbols() -> LogLevelPrefixInterface {
-        return logLevelPrefix
+    func getLogLevelPrefix() -> LogLevelPrefixInterface {
+        return logLevelPrefixes
     }
     
     func getIsTimestampIncluded() -> Bool {

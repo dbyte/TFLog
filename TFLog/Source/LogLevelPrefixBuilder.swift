@@ -25,39 +25,39 @@
 
 // MARK: - Interface for LogLevelPrefixBuilder
 
-/// Log level unicode symbols customization.
+/// Log level unicode prefixes customization.
 ///
-/// Use this builder to create a new set of symbols or just set the ones you want to overwrite.
+/// Use this builder to create a new set of prefixes or just set the ones you want to overwrite.
 /// - See also: `LogConfigurable`, `LogLevelPrefixInterface`
 public protocol LogLevelPrefixBuildable {
     
     /// Set _error_ prefix
-    /// - Parameter error: Sets a prefix for log level _error_ in form of unicode symbol or text
+    /// - Parameter error: Sets a prefix for log level _error_ in form of unicode prefix or text
     @discardableResult
     func setError(_ error: String) -> LogLevelPrefixBuildable
     
     /// Set _warning_ prefix
-    /// - Parameter warning: Sets a prefix for log level _warning_ in form of unicode symbol or text
+    /// - Parameter warning: Sets a prefix for log level _warning_ in form of unicode prefix or text
     @discardableResult
     func setWarning(_ warning: String) -> LogLevelPrefixBuildable
     
     /// Set _success_ prefix
-    /// - Parameter success: Sets a prefix for log level _success_ in form of unicode symbol or text
+    /// - Parameter success: Sets a prefix for log level _success_ in form of unicode prefix or text
     @discardableResult
     func setSuccess(_ success: String) -> LogLevelPrefixBuildable
     
     /// Set _action_ prefix
-    /// - Parameter action: Sets a prefix for log level _action_ in form of unicode symbol or text
+    /// - Parameter action: Sets a prefix for log level _action_ in form of unicode prefix or text
     @discardableResult
     func setAction(_ action: String) -> LogLevelPrefixBuildable
     
     /// Set _canceled_ prefix
-    /// - Parameter canceled: Sets a prefix for log level _canceled_ in form of unicode symbol or text
+    /// - Parameter canceled: Sets a prefix for log level _canceled_ in form of unicode prefix or text
     @discardableResult
     func setCanceled(_ canceled: String) -> LogLevelPrefixBuildable
     
     /// Set _other_ prefix
-    /// - Parameter other: Sets a prefix for log level _other_ in form of unicode symbol or text
+    /// - Parameter other: Sets a prefix for log level _other_ in form of unicode prefix or text
     @discardableResult
     func setOther(_ other: String) -> LogLevelPrefixBuildable
     
@@ -70,9 +70,9 @@ public protocol LogLevelPrefixBuildable {
     func build() -> LogLevelPrefixInterface
 }
 
-// MARK: - Builder implementation for replacing log level unicode symbols
+// MARK: - Builder implementation for replacing log level unicode prefixes
 
-/// Log level unicode symbols customization.
+/// Log level unicode prefixes customization.
 internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     
     private var logLevelPrefix: LogLevelPrefixInterface
@@ -80,7 +80,7 @@ internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     
     init(forConfiguration config: LogConfigurable) {
         self.config = config
-        logLevelPrefix = config.getLogLevelSymbols()
+        logLevelPrefix = config.getLogLevelPrefix()
     }
     
     func setError(_ error: String) -> LogLevelPrefixBuildable {
@@ -114,7 +114,7 @@ internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     }
     
     func buildAndReplace() -> LogLevelPrefixInterface {
-        config?.replaceSymbols(with: logLevelPrefix)
+        config?.replacePrefixes(with: logLevelPrefix)
         return logLevelPrefix
     }
     

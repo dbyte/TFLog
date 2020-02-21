@@ -12,7 +12,7 @@ A protocol based Swift logging utility, currently supporting OSLog and Console.
 
 ## Features
 
-- [x] Customizable log symbols (unicode)
+- [x] Customizable log prefixes (unicode)
 - [x] Main logging runs in background thread
 - [x] Swappable log providers by conforming to protocol
 - [x] Default support for OSLog and Console

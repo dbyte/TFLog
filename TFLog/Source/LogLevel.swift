@@ -23,11 +23,11 @@
 //  THE SOFTWARE.
 //
 
-// MARK: Fixed log levels and their corresponding (unicode-) symbols
+// MARK: Fixed log levels and their corresponding (unicode-) prefixes
 
 /// Provided log levels.
 ///
-/// You can replace the unicode symbols by using `LogConfigurable.replaceLogLevelSymbols()` .
+/// You can replace the unicode prefixes by using `LogConfigurable.replaceLogLevelPrefix()` .
 /// - See also: `LogLevelPrefixBuilder`
 public enum LogLevel: String, CaseIterable {
     
@@ -38,30 +38,30 @@ public enum LogLevel: String, CaseIterable {
     case canceled
     case other
     
-    // It's possible for consumers to replace the corresponding unicode symbols.
-    internal func getSymbol(from symbols: LogLevelPrefixInterface) -> String {
-        var symbol: String {
+    // It's possible for consumers to replace the corresponding unicode prefixes.
+    internal func getPrefix(from prefixes: LogLevelPrefixInterface) -> String {
+        var prefix: String {
             
             switch self {
             case .error:
-                return symbols.error
+                return prefixes.error
                 
             case .warning:
-                return symbols.warning
+                return prefixes.warning
                 
             case .success:
-                return symbols.success
+                return prefixes.success
                 
             case .action:
-                return symbols.action
+                return prefixes.action
                 
             case .canceled:
-                return symbols.canceled
+                return prefixes.canceled
                 
             case .other:
-                return symbols.other
+                return prefixes.other
             }
         }
-        return symbol
+        return prefix
     }
 }

@@ -47,10 +47,10 @@ class LogLevelTests: TFLogTestBase {
 
 extension LogLevelTests {
     
-    final func testGetSymbol() {
+    final func testGetPrefix() {
         let config = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         
-        let customLogLevelSymbols = LogLevelPrefixBuilder(forConfiguration: config)
+        let customLogLevelPrefix = LogLevelPrefixBuilder(forConfiguration: config)
             .setAction("a")
             .setCanceled("b")
             .setError("c")
@@ -59,11 +59,11 @@ extension LogLevelTests {
             .setWarning("f")
             .build()
         
-        XCTAssertEqual(LogLevel.action.getSymbol(from: customLogLevelSymbols), "a")
-        XCTAssertEqual(LogLevel.canceled.getSymbol(from: customLogLevelSymbols), "b")
-        XCTAssertEqual(LogLevel.error.getSymbol(from: customLogLevelSymbols), "c")
-        XCTAssertEqual(LogLevel.other.getSymbol(from: customLogLevelSymbols), "d")
-        XCTAssertEqual(LogLevel.success.getSymbol(from: customLogLevelSymbols), "e")
-        XCTAssertEqual(LogLevel.warning.getSymbol(from: customLogLevelSymbols), "f")
+        XCTAssertEqual(LogLevel.action.getPrefix(from: customLogLevelPrefix), "a")
+        XCTAssertEqual(LogLevel.canceled.getPrefix(from: customLogLevelPrefix), "b")
+        XCTAssertEqual(LogLevel.error.getPrefix(from: customLogLevelPrefix), "c")
+        XCTAssertEqual(LogLevel.other.getPrefix(from: customLogLevelPrefix), "d")
+        XCTAssertEqual(LogLevel.success.getPrefix(from: customLogLevelPrefix), "e")
+        XCTAssertEqual(LogLevel.warning.getPrefix(from: customLogLevelPrefix), "f")
     }
 }

@@ -25,31 +25,31 @@
 
 // MARK: - Interface for LogLevelPrefix
 
-/// Represents all provided log level unicode symbols of this framework.
-/// Log level unicode symbols customization can be done via `LogConfigurable.replaceLogLevelSymbols()` .
+/// Represents all provided log level unicode prefixes of this framework.
+/// Log level unicode prefixes customization can be done via `LogConfigurable.replaceLogLevelPrefix()` .
 /// - See also: `LogLevelPrefixBuilder`
 public protocol LogLevelPrefixInterface {
     
-    /// Error log level unicode symbol
+    /// Error log level unicode prefix
     var error: String { get set }
     
-    /// Warning log level unicode symbol
+    /// Warning log level unicode prefix
     var warning: String { get set }
     
-    /// Success log level unicode symbol
+    /// Success log level unicode prefix
     var success: String { get set }
     
-    /// Action log level unicode symbol
+    /// Action log level unicode prefix
     var action: String { get set }
     
-    /// Canceled log level unicode symbol
+    /// Canceled log level unicode prefix
     var canceled: String { get set }
     
-    /// Other log level unicode symbol
+    /// Other log level unicode prefix
     var other: String { get set }
 }
 
-// MARK: - Log level unicode symbols
+// MARK: - Log level unicode prefixes
 
 internal struct LogLevelPrefix: LogLevelPrefixInterface, Equatable {
     
@@ -62,7 +62,7 @@ internal struct LogLevelPrefix: LogLevelPrefixInterface, Equatable {
     internal var canceled: String
     internal var other: String
     
-    // Set default log level symbols
+    // Set default log level prefixes
     internal init() {
         self.error = "📕"
         self.warning = "📙"

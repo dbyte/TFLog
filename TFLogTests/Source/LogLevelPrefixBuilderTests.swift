@@ -32,7 +32,7 @@ class LogLevelPrefixBuilderTests: TFLogTestBase {
     var configuration: LogConfigurable!
     
     //swiftlint:disable:next identifier_name
-    private var h: LogLevelSymbolBuilderTestsHelper!
+    private var h: LogLevelPrefixBuilderTestsHelper!
     
     // MARK: - Setup/Teardown
     
@@ -40,7 +40,7 @@ class LogLevelPrefixBuilderTests: TFLogTestBase {
         super.setUp()
         configuration = LogConfigurationStub().withActivatedLoggingAndProviderMock()
         sut = LogLevelPrefixBuilder(forConfiguration: configuration)
-        h = LogLevelSymbolBuilderTestsHelper()
+        h = LogLevelPrefixBuilderTestsHelper()
     }
     
     override func tearDown() {
@@ -64,7 +64,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().error
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().error
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().error
         
         // Then
         h.setterTest()
@@ -79,7 +79,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().warning
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().warning
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().warning
         
         // Then
         h.setterTest()
@@ -94,7 +94,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().success
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().success
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().success
         
         // Then
         h.setterTest()
@@ -109,7 +109,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().action
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().action
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().action
         
         // Then
         h.setterTest()
@@ -124,7 +124,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().canceled
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().canceled
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().canceled
         
         // Then
         h.setterTest()
@@ -139,7 +139,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().other
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelSymbols().other
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().other
         
         // Then
         h.setterTest()
@@ -148,7 +148,7 @@ extension LogLevelPrefixBuilderTests {
 
 // MARK: - Private helper class
 
-private class LogLevelSymbolBuilderTestsHelper {
+private class LogLevelPrefixBuilderTestsHelper {
     
     var expectedPrefix = ""
     var builderObject: LogLevelPrefixBuildable!

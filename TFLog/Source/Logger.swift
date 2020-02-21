@@ -166,7 +166,7 @@ private extension Logger {
         
         let timestampStringAndWhitespace = configuration.getIsTimestampIncluded() ? logData.timestampStr + " " : ""
         
-        let logLevelPrefix = getLogLevelSymbol(lev: logData.logLevel)
+        let logLevelPrefix = getLogLevelPrefix(lev: logData.logLevel)
         let logLevelPrefixAndNewline = logLevelPrefix.isEmpty ? "" : logLevelPrefix + "\n"
         let logLevelPrefixAndWhitespace = logLevelPrefix.isEmpty ? "" : logLevelPrefix + " "
         
@@ -217,8 +217,8 @@ private extension Logger {
         return "▶️" + String(describing: data) + "◀️"
     }
     
-    private func getLogLevelSymbol(lev: LogLevel?) -> String {
-        return lev?.getSymbol(from: configuration.getLogLevelSymbols()) ?? ""
+    private func getLogLevelPrefix(lev: LogLevel?) -> String {
+        return lev?.getPrefix(from: configuration.getLogLevelPrefix()) ?? ""
     }
     
     private func getTimestampString() -> String {
