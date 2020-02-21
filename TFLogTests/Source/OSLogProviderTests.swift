@@ -92,6 +92,7 @@ extension OSLogProviderTests {
             timestampStr: nil,
             isPublic: false)
         
+        // When
         sut.executeLog(with: logData)
         
         logData.logLevel = .canceled
@@ -111,5 +112,7 @@ extension OSLogProviderTests {
         
         logData.logLevel = .none
         sut.executeLog(with: logData)
+        
+        // Then?
     }
 }
