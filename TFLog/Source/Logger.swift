@@ -42,6 +42,8 @@ internal class Logger: LogInterface {
         self.configuration = configuration
         self.logData = LogData()
         self.logData.category = category
+        self.logData.subsystem = configuration.getSubsystemID()
+        self.logData.isPublic = true // TODO
         option = nil
     }
 }
