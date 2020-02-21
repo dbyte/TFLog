@@ -46,11 +46,20 @@ internal class OSLogProvider: LogProvider {
 
 private extension OSLogProvider {
     
+    private func serialize(from logData: LogData) {
+        self.message = logData.message
+        self.subsystem = adapt(subsystem: logData.subsystem)
+        self.category = adapt(category: logData.category)
+        self.type = adapt(logLevel: logData.logLevel)
+        self.publicArg = adapt(isPublic: logData.isPublic)
+        self.osLog = OSLog(subsystem: self.subsystem, category: self.category)
+    }
+    
     // Convert log level
     private func adapt(logLevel: LogLevel?) -> OSLogType {
         switch logLevel {
         case .action:
-            return OSLogType.info
+            return OSLogType.debug
         case .canceled:
             return OSLogType.info
         case .error:
@@ -62,7 +71,7 @@ private extension OSLogProvider {
         case .warning:
             return OSLogType.error
         default:
-            return OSLogType.info
+            return OSLogType.debug
         }
     }
     
@@ -95,24 +104,10 @@ private extension OSLogProvider {
 
 internal extension OSLogProvider {
     
-    /// Setup OSLog adapter to be prepared for logging.
-    func setup(
-        message: String? = nil,
-        subsystem: String? = nil,
-        category: String? = nil,
-        logLevel: LogLevel? = nil,
-        isPublic: Bool? = nil) {
-        
-        self.message = message ?? ""
-        self.subsystem = adapt(subsystem: subsystem ?? "")
-        self.category = adapt(category: category ?? "")
-        self.type = adapt(logLevel: logLevel)
-        self.publicArg = adapt(isPublic: isPublic ?? true)
-        self.osLog = OSLog(subsystem: self.subsystem, category: self.category)
-    }
-    
     /// Executes logging.
-    func executeLog() {
+    /// - Parameter logData: The data needed by OSLog to execute the log.
+    func executeLog(with logData: LogData) {
+        serialize(from: logData)
         os_log(publicArg, log: osLog, type: type, message)
     }
 }

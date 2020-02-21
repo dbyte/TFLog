@@ -23,22 +23,18 @@
 //  THE SOFTWARE.
 //
 
- // MARK: - LogProvider
+// MARK: - LogProvider
 
 /// Protocol to which any log provider must subscribe to be usable by TFLog.
 public protocol LogProvider {
 
-    func executeLog()
-    
-    func setup(
-        message: String?,
-        subsystem: String?,
-        category: String?,
-        logLevel: LogLevel?,
-        isPublic: Bool?)
+    /// Finally executes logging with configured LogProvider.
+    ///
+    /// - Parameter logData: The data needed by the LogProvider to execute the log.
+    func executeLog(with logData: LogData)
 }
 
- // MARK: - LogProvider Factory
+// MARK: - LogProvider Factory
 
 /// Returning ready-for-use instances of different LogProviders.
 open class LogProviderFactory {

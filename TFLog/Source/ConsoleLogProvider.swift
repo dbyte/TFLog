@@ -30,30 +30,31 @@ internal class ConsoleLogProvider: LogProvider {
     
     // MARK: - Properties/Init
     
-    private var message: String?
-    private var category: String?
+    private var message = ""
+    private var category = ""
     
     internal init() {}
 }
+
+// MARK: - Private Methods
+
+private extension ConsoleLogProvider {
     
-    // MARK: - Internal Methods
+    private func serialize(from logData: LogData) {
+        self.message = logData.message
+        self.category = logData.category
+    }
+}
+    
+// MARK: - Internal Methods
 
 internal extension ConsoleLogProvider {
     
-    func executeLog() {
-        let category = self.category ?? ""
-        let message = self.message ?? ""
+    /// Executes logging by printing to console.
+    ///
+    /// - Parameter setup: Data needed by the console to print the log.
+    func executeLog(with logData: LogData) {
+        serialize(from: logData)
         print("[\(category)] \(message)")
-    }
-    
-    func setup(
-        message: String?,
-        subsystem: String?,
-        category: String?,
-        logLevel: LogLevel?,
-        isPublic: Bool?) {
-        
-        self.message = message
-        self.category = category
     }
 }
