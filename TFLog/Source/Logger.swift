@@ -32,30 +32,25 @@ import Foundation
 /// Main Logger. Provides logging functionality by using a logging provider such as OSLog or Console.
 internal class Logger: LogInterface {    
     
-    // MARK: - Properties/Init
+    // MARK: Properties/Init
     
     private var configuration: LogConfigurable
-    private var category: String
-    private var header: String
-    private var dataString: String
-    private var timestampString: String
-    private var logLevelSymbol: String
+    private var logData: LogData
     private var option: Options?
     
     internal required init(configuration: LogConfigurable, category: String) {
         self.configuration = configuration
-        self.category = category
-        header = ""
-        dataString = ""
-        timestampString = ""
-        logLevelSymbol = ""
+        self.logData = LogData()
+        self.logData.category = category
         option = nil
     }
 }
 
-// MARK: - Methods
+// MARK: Methods
 
 internal extension Logger {
+    
+    // MARK: - Conforming to protocol LogInterface
     
     func log(_ header: String?) {
         log(header, data: nil, lev: nil)
@@ -81,31 +76,33 @@ internal extension Logger {
     func log(_ header: String? = "", data: Any? = nil, lev: LogLevel?) {
         
         #if DEBUG
-        // Pipeline core logging to background.
-        // Tried for weak/unowned self capturing here, but won't work: self gets lost.
-        // Did init/deinit tests by manually counting instances up & down; seems there is no memory leak.
+        // Run core logging in background thread.
+        // Note: Tried for weak/unowned self capturing here, but won't work: self gets lost.
+        // Did init/deinit tests by manually counting instances up & down; seems there is no memory leak (v1.0.0).
         DispatchQueue.global(qos: .background).async {
             
             // Early return when switched off via configuration.
             guard self.configuration.getIsLoggingActive() else { return }
             
-            // Sanitize incoming values
-            self.header = header?.trimmingCharacters(in: .whitespaces) ?? ""
+            // Trim and set incoming string
+            self.logData.message = header?.trimmingCharacters(in: .whitespaces) ?? ""
             
-            // Try casting data to string
-            self.dataString = self.getDataString(data: data)
+            // Set any additional incoming data
+            self.logData.data = data
             
-            // Get timestamp
-            self.timestampString = self.getTimestampString()
+            // Set timestamp
+            self.logData.timestampStr = self.getTimestampString()
             
-            // Get emoticon for error cat
-            self.logLevelSymbol = self.getLogLevelSymbol(lev: lev)
+            // Set emoticon for error cat
+            self.logData.logLevel = lev
             
             // Output
-            self.execute(logLevel: lev)
+            self.execute()
         }
         #endif
     }
+    
+    // MARK: Special option: make new line
     
     func newLine() {
         #if DEBUG
@@ -118,6 +115,8 @@ internal extension Logger {
         #endif
     }
     
+    // MARK: Special option: make vertical divider
+    
     func verticalDivider() {
         #if DEBUG
         // Early return when logging was switched off via configuration.
@@ -128,6 +127,8 @@ internal extension Logger {
         execute()
         #endif
     }
+    
+    // MARK: Configuration accsessors
     
     func setConfiguration(with configuration: LogConfigurable) {
         self.configuration = configuration
@@ -143,27 +144,29 @@ internal extension Logger {
 
 private extension Logger {
     
-    private func execute(logLevel: LogLevel? = nil) {
+    private func execute() {
+        // Compose final message
+        logData.message = getComposedMessage()
+        
         let provider = configuration.getLogProvider()
-        
-        provider.setup(
-            message: getFinalOutput(),
-            subsystem: configuration.getSubsystemID(),
-            category: category,
-            logLevel: logLevel,
-            isPublic: true)
-        
-        provider.executeLog()
+        provider.executeLog(with: logData)
     }
     
-    private func getFinalOutput() -> String {
+    private func getComposedMessage() -> String {
+        
+        // MARK: Compose log message text
+        
         var final: String
         
-        // Concat log message text
+        let header = logData.message
         
-        let timestampStringAndWhitespace = configuration.getIsTimestampIncluded() ? timestampString + " " : ""
-        let logLevelSymbolAndNewline = self.logLevelSymbol.isEmpty ? "" : logLevelSymbol + "\n"
-        let logLevelSymbolAndWhitespace = self.logLevelSymbol.isEmpty ? "" : logLevelSymbol + " "
+        let dataString = getDataString(data: logData.data) // try casting data to string, returns empty string on fail
+        
+        let timestampStringAndWhitespace = configuration.getIsTimestampIncluded() ? logData.timestampStr + " " : ""
+        
+        let logLevelSymbol = getLogLevelSymbol(lev: logData.logLevel)
+        let logLevelSymbolAndNewline = logLevelSymbol.isEmpty ? "" : logLevelSymbol + "\n"
+        let logLevelSymbolAndWhitespace = logLevelSymbol.isEmpty ? "" : logLevelSymbol + " "
         
         switch(header, dataString) {
         case let (header, dataString) where !header.isEmpty && dataString.isEmpty:
@@ -179,13 +182,15 @@ private extension Logger {
             final = timestampStringAndWhitespace + logLevelSymbolAndWhitespace + header + "\n" + dataString
             
         case let (header, dataString) where header.isEmpty && dataString.isEmpty && !logLevelSymbol.isEmpty:
+            // This case isn't part of protocol LogInterface yet (v1.0.0). Anyway doesn't hurt to
+            // keep it, though it can't be tested yet.
             final = logLevelSymbol
             
         default:
             final = ""
         }
         
-        // Option handling
+        // MARK: Option handling
         
         switch option {
         case .newLine:
@@ -198,10 +203,12 @@ private extension Logger {
             break
         }
         
-        // Result
+        // MARK: Result
         
         return final.removeExtraSpaces()
     }
+    
+    // MARK: -
     
     private func getDataString(data: Any?) -> String {
         guard let data = data else { return "" }
