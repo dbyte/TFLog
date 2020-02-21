@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //
 
+/// Pure data object. Holds a superset of data from which LogProviders need some or all to output a log.
 public struct LogData {
     
     // MARK: - Properties/Init
