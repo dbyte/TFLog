@@ -26,7 +26,7 @@
 import XCTest
 @testable import TFLog
 
-class OSLogProviderTests: XCTestCase {
+class OSLogProviderTests: TFLogTestBase {
     
     // MARK: - Setup/Teardown
     
@@ -54,58 +54,62 @@ class OSLogProviderTests: XCTestCase {
 
 extension OSLogProviderTests {
     
-    final func testSetupWithArguments() {
-        sut.setup(
+    final func testExecuteWithData() {
+        // Given
+        let logData = LogData(
             message: message,
+            data: nil,
             subsystem: subsystem,
             category: category,
             logLevel: .action,
+            timestampStr: nil,
             isPublic: true)
         
-        sut.setup(
-            message: message,
-            subsystem: subsystem,
-            category: "\(Self.self)",
-            logLevel: .action)
+        // When
+        sut.executeLog(with: logData)
         
-        sut.setup(
-            message: message,
-            subsystem: subsystem)
+        // Then?
+    }
+    
+    final func testSetupWithEmptyData() {
+        // Given
+        let logData = LogData()
         
-        sut.setup(
-            message: message)
+        // When
+        sut.executeLog(with: logData)
+        
+        // Then?
     }
     
-    final func testSetupWithoutArguments() {
-        sut.setup()
-    }
-    
-    final func testSetupWithDifferentLevels() {
-        sut.setup(logLevel: .action)
-        sut.setup(logLevel: .canceled)
-        sut.setup(logLevel: .error)
-        sut.setup(logLevel: .other)
-        sut.setup(logLevel: .success)
-        sut.setup(logLevel: .warning)
-    }
-    
-    final func testExecute() {
-        sut.setup(
-            message: "A PUBLIC message text.",
+    final func testExecuteWithDifferentLevels() {
+        // Given
+        var logData = LogData(
+            message: message,
+            data: nil,
             subsystem: subsystem,
             category: category,
             logLevel: .action,
-            isPublic: true)
-        
-        sut.executeLog()
-        
-        sut.setup(
-            message: "A PRIVATE message text.",
-            subsystem: subsystem,
-            category: category,
-            logLevel: .action,
+            timestampStr: nil,
             isPublic: false)
         
-        sut.executeLog()
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .canceled
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .error
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .other
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .success
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .warning
+        sut.executeLog(with: logData)
+        
+        logData.logLevel = .none
+        sut.executeLog(with: logData)
     }
 }

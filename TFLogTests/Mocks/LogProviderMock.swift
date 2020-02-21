@@ -6,35 +6,36 @@
 //  Copyright © 2020 dbyte. All rights reserved.
 //
 
-import TFLog
 import XCTest
+@testable import TFLog
 
 class LogProviderMock: LogProvider {
-    
+
     // MARK: - Properties/Init
     
     var expectation: XCTestExpectation!
     
-    var message: String = ""
-    var subsystem: String = ""
-    var category: String = ""
-    var logLevel: LogLevel?
-    var isPublic: Bool = true
+    internal var message = ""
+    internal var data: Any?
+    internal var subsystem = ""
+    internal var category = ""
+    internal var logLevel: LogLevel?
+    internal var timestampStr = ""
+    internal var isPublic = true
     
     internal init() {}
     
      // MARK: - Methods
     
-    func executeLog() {
+    internal func executeLog(with logData: LogData) {
+        self.message = logData.message
+        self.data = logData.data
+        self.subsystem = logData.subsystem
+        self.category = logData.category
+        self.logLevel = logData.logLevel
+        self.timestampStr = logData.timestampStr
+        self.isPublic = logData.isPublic
         expectation.fulfill()
-    }
-    
-    func setup(message: String?, subsystem: String?, category: String?, logLevel: LogLevel?, isPublic: Bool?) {
-        self.message = message ?? ""
-        self.subsystem = subsystem ?? ""
-        self.category = category ?? ""
-        self.logLevel = logLevel
-        self.isPublic = isPublic ?? true
     }
     
     internal func setExpectation(_ expectation: XCTestExpectation) {
