@@ -80,7 +80,7 @@ internal final class LogLevelPrefixBuilder: LogLevelPrefixBuildable {
     
     init(forConfiguration config: LogConfigurable) {
         self.config = config
-        logLevelPrefix = config.getLogLevelPrefix()
+        logLevelPrefix = config.getLogLevelPrefixes()
     }
     
     func setError(_ error: String) -> LogLevelPrefixBuildable {

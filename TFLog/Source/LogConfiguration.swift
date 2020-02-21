@@ -57,10 +57,10 @@ public protocol LogConfigurable {
     func getLogProvider() -> LogProvider
     
     /// Get all current log level prefixes.
-    func getLogLevelPrefix() -> LogLevelPrefixInterface
+    func getLogLevelPrefixes() -> LogLevelPrefixInterface
     
     /// Replaces unicode log level prefixes in your logger configuration.
-    func replaceLogLevelPrefix() -> LogLevelPrefixBuildable
+    func replaceLogLevelPrefixes() -> LogLevelPrefixBuildable
     
     /// Replace current set of unicode log level prefixes with another.
     func replacePrefixes(with prefixes: LogLevelPrefixInterface)
@@ -117,7 +117,7 @@ internal extension LogConfiguration {
         self.subsystemID = subsystemID
     }
     
-    func replaceLogLevelPrefix() -> LogLevelPrefixBuildable {
+    func replaceLogLevelPrefixes() -> LogLevelPrefixBuildable {
         return LogLevelPrefixBuilder(forConfiguration: self)
     }
     
@@ -133,7 +133,7 @@ internal extension LogConfiguration {
         return logProvider
     }
     
-    func getLogLevelPrefix() -> LogLevelPrefixInterface {
+    func getLogLevelPrefixes() -> LogLevelPrefixInterface {
         return logLevelPrefixes
     }
     

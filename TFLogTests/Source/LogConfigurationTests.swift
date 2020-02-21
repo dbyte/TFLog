@@ -115,7 +115,7 @@ extension LogConfigurationTests {
     
     final func testReplaceLogLevelPrefix() {
         let expectedLogLevelPrefix: LogLevelPrefixInterface =
-            sut.replaceLogLevelPrefix()
+            sut.replaceLogLevelPrefixes()
                 .setAction("a")
                 .setCanceled("b")
                 .setError("c")
@@ -124,7 +124,7 @@ extension LogConfigurationTests {
                 .setWarning("f")
                 .buildAndReplace()
         
-        let cachedLogLevelPrefix = sut.getLogLevelPrefix()
+        let cachedLogLevelPrefix = sut.getLogLevelPrefixes()
         
         if cachedLogLevelPrefix as? LogLevelPrefix == nil {
             XCTFail("Object cachedLogLevelPrefix could not be downcasted to \(LogLevelPrefix.self). " +
@@ -136,8 +136,8 @@ extension LogConfigurationTests {
     }
     
     final func testReplacePrefixes() {
-        let defaultLogLevelPrefix = sut.getLogLevelPrefix()
-        let expectedLogLevelPrefix = sut.replaceLogLevelPrefix()
+        let defaultLogLevelPrefix = sut.getLogLevelPrefixes()
+        let expectedLogLevelPrefix = sut.replaceLogLevelPrefixes()
             .setAction("a")
             .setCanceled("b")
             .setError("c")

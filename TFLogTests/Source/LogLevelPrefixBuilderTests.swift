@@ -64,7 +64,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().error
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().error
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().error
         
         // Then
         h.setterTest()
@@ -79,7 +79,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().warning
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().warning
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().warning
         
         // Then
         h.setterTest()
@@ -94,7 +94,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().success
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().success
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().success
         
         // Then
         h.setterTest()
@@ -109,7 +109,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().action
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().action
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().action
         
         // Then
         h.setterTest()
@@ -124,7 +124,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().canceled
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().canceled
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().canceled
         
         // Then
         h.setterTest()
@@ -139,7 +139,7 @@ extension LogLevelPrefixBuilderTests {
         h.returnedBuilderPrefix = h.builderObject.build().other
         
         h.builderObject.buildAndReplace()
-        h.returnedConfigurationPrefix = configuration.getLogLevelPrefix().other
+        h.returnedConfigurationPrefix = configuration.getLogLevelPrefixes().other
         
         // Then
         h.setterTest()

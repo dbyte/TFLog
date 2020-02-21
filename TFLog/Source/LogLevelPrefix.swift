@@ -26,7 +26,7 @@
 // MARK: - Interface for LogLevelPrefix
 
 /// Represents all provided log level unicode prefixes of this framework.
-/// Log level unicode prefixes customization can be done via `LogConfigurable.replaceLogLevelPrefix()` .
+/// Log level unicode prefixes customization can be done via `LogConfigurable.replaceLogLevelPrefixes()` .
 /// - See also: `LogLevelPrefixBuilder`
 public protocol LogLevelPrefixInterface {
     

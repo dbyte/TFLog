@@ -27,7 +27,7 @@
 
 /// Provided log levels.
 ///
-/// You can replace the unicode prefixes by using `LogConfigurable.replaceLogLevelPrefix()` .
+/// You can replace the unicode prefixes by using `LogConfigurable.replaceLogLevelPrefixes()` .
 /// - See also: `LogLevelPrefixBuilder`
 public enum LogLevel: String, CaseIterable {
     

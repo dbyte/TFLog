@@ -218,7 +218,7 @@ private extension Logger {
     }
     
     private func getLogLevelPrefix(lev: LogLevel?) -> String {
-        return lev?.getPrefix(from: configuration.getLogLevelPrefix()) ?? ""
+        return lev?.getPrefix(from: configuration.getLogLevelPrefixes()) ?? ""
     }
     
     private func getTimestampString() -> String {
